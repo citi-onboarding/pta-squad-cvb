@@ -8,7 +8,7 @@ import { cat3 } from "@/assets";
 import { cat4 } from "@/assets";
 import { cat5 } from "@/assets";
 import { cat6 } from "@/assets";
-import { Button } from "./button";
+import { Button } from "../button";
 
 interface PetCardProps {
   type: "Primeira consulta" | "Vacinacao" | "Checkup" | "Retorno" | "Historico";

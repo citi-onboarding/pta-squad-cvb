@@ -16,6 +16,7 @@ export default function Home() {
       <div>
         <Image src={LogoCITi} alt="Logo citi" />
       </div>
+
       <PetCard
         type="Primeira consulta"
         nomedono="dono"
@@ -25,6 +26,7 @@ export default function Home() {
         horario="18:30"
         imagem={cat1}
       />
+
       <div className="flex flex-col justify-center items-center">
         <h1 className="text-white text-4xl font-bold">NextJS Boilerplate</h1>
         <p className="text-white text-xl">
