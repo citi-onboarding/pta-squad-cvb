@@ -2,13 +2,6 @@ import Image from "next/image";
 import { StaticImageData } from "next/image";
 
 import { Alarm } from "@/assets";
-import { cat1 } from "@/assets";
-import { cat2 } from "@/assets";
-import { cat3 } from "@/assets";
-import { cat4 } from "@/assets";
-import { cat5 } from "@/assets";
-import { cat6 } from "@/assets";
-import { Button } from "../button";
 
 interface PetCardProps {
   type: "Primeira consulta" | "Vacinacao" | "Checkup" | "Retorno" | "Historico";

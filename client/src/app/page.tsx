@@ -8,7 +8,7 @@ import { cat5 } from "@/assets";
 import { cat6 } from "@/assets";
 
 import { LogoCITi } from "../assets";
-import PetCard from "@/components/ui/pet-card";
+import PetCard from "@/components/pet-card";
 
 export default function Home() {
   return (
