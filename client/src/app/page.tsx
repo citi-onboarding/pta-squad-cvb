@@ -1,13 +1,19 @@
 import Image from "next/image";
-
+import ConsultaForm from "@/components/consulta";
 import { LogoCITi } from "../assets";
-
+import { LogotipoSVG } from "../assets";
+import { pataSVG } from "../assets";
 export default function Home() {
   return (
     <div className="flex flex-1 flex-col h-full justify-around items-center bg-black">
       <div>
         <Image src={LogoCITi} alt="Logo citi" />
       </div>
+
+      <div> 
+        <ConsultaForm />
+      </div>
+
       <div className="flex flex-col justify-center items-center">
         <h1 className="text-white text-4xl font-bold">NextJS Boilerplate</h1>
         <p className="text-white text-xl">
@@ -18,3 +24,5 @@ export default function Home() {
     </div>
   );
 }
+
+
