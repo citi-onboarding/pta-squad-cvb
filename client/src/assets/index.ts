@@ -21,3 +21,6 @@ export { cat6 };
 
 import cat2 from "./cat2.svg";
 export { cat2 };
+
+import calendario from "./calendario.svg";
+export { calendario };
