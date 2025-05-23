@@ -1,12 +1,26 @@
 import React from "react";
+import Image from "next/image";
 import { LogotipoSVG } from "@/assets";
 import { pataSVG } from "@/assets";
 import { calendar } from "@/assets";
 import { alarm } from "@/assets";
+import { Botaoclose } from "@/assets";
 const ConsultaForm = () => {
   return (
-    <div className="w-[800px] mx-auto p-[45px] bg-white rounded-[20px] border border-gray-200 shadow-sm">
+    <div className="relative w-[800px] mx-auto p-[45px] bg-white rounded-[20px] border border-gray-200 shadow-sm">
       {/* parte de cima*/}
+
+      <div className="absolute top-6 right-6 p-4 flex items-center justify-center">
+        <Image 
+          src={Botaoclose.src}
+          alt = "Ícone"
+          width ={24}
+          height={24}
+          className="rounded-[5px] block"
+        />
+      </div>
+
+
       <div className="flex items-center flex justify-center ">
         <img src={LogotipoSVG.src} alt="logo do citi" className="w-[150px] h-[100px] -mr-5"/>
         <img src={pataSVG.src} alt="logo da pata com coração" className="w-[75px] h-[50px] mt-4"/>
@@ -84,6 +98,8 @@ const ConsultaForm = () => {
       >
         Finalizar cadastro
       </button>
+
+
     </div>
   );
 };
