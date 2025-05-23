@@ -3,7 +3,7 @@ import { StaticImageData } from "next/image";
 
 import { Alarm } from "@/assets";
 
-interface PetCardProps {
+export interface PetCardProps {
   type: "Primeira consulta" | "Vacinacao" | "Checkup" | "Retorno" | "Historico";
   nomepet: string;
   nomedono: string;

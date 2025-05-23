@@ -11,7 +11,7 @@ export default function BtFiltro({ ativo, setAtivo }: BtFiltroProps) {
     <div className="flex flex-1 flex-col h-full justify-around items-center bg-black">
       <div className="w-[243px] h-[58px] bg-btfiltro rounded-xl flex items-center p-1">
         <button
-          onClick={() => setAtivo("historico")}
+          onClick={() => setAtivo("Historico")}
           className={`flex-1 rounded-xl transition-all w-[92px] h-[42px] font-sf ${
             ativo === "historico" ? "bg-white" : "bg-btfiltro"
           }`}

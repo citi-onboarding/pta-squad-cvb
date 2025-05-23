@@ -14,7 +14,7 @@ import { cat5 } from "@/assets";
 import { cat6 } from "@/assets";
 
 export default function gg() {
-  const [ativo, setAtivo] = useState("historico");
+  const [ativo, setAtivo] = useState("Historico");
 
   const cardsMock: PetCardProps[] = [
     {
@@ -71,7 +71,40 @@ export default function gg() {
       horario: "16:00",
       imagem: cat3,
     },
+    {
+      type: "Historico",
+      nomepet: "Thor",
+      nomedono: "Lucas",
+      nomedr: "Dra. Julia",
+      data: "24/05",
+      horario: "16:00",
+      imagem: cat3,
+    },
+    {
+      type: "Historico",
+      nomepet: "Thor",
+      nomedono: "Lucas",
+      nomedr: "Dra. Julia",
+      data: "24/05",
+      horario: "16:00",
+      imagem: cat3,
+    },
+    {
+      type: "Historico",
+      nomepet: "Thor",
+      nomedono: "Lucas",
+      nomedr: "Dra. Julia",
+      data: "24/05",
+      horario: "16:00",
+      imagem: cat3,
+    },
   ];
+
+  const cardsfiltrados = cardsMock.filter((card) =>
+    ativo === "Historico"
+      ? card.type === "Historico"
+      : card.type !== "Historico"
+  );
 
   return (
     <div className="flex flex-1 flex-col h-full justify-around items-center bg-black">
@@ -87,7 +120,7 @@ export default function gg() {
         </div>
       </div>
       <div className="grid grid-cols-3 gap-[24px]">
-        {cardsMock.map((conteudodoindicedoarray, indicedoarray) => (
+        {cardsfiltrados.map((conteudodoindicedoarray, indicedoarray) => (
           <PetCard key={indicedoarray} {...conteudodoindicedoarray} />
         ))}
       </div>
