@@ -1,34 +1,44 @@
 import React from "react";
 import Image from "next/image";
-import 
+import { Logopet, Buttongroup } from "@/assets";
 
-const TopBar =() =>{
-    return(
-        /*espaço da div em si*/
+const TopBar = () => {
+  return (
+    <div className="w-[full] h-[80px] flex justify-between items-center py-5 px-12 border-b border-[#d9d9d9] bg-white  mx-auto">
+      {/* Logo à esquerda */}
+      <div className="flex-none">
+        <Image
+          src={Logopet} 
+          alt="logo do citi pet"
+          className="w-[150px] h-[50px] object-contain"
+        />
+      </div>
 
-        <div className="w-[1920px] h-[114px] justify-between items-center pt-[20px]
-        pb-[20px] pr-[48px] pl-[48px] border-b border-[#d9d9d9]">
+      {/* Botões centrais */}
+      <div className="flex-1 flex justify-center gap-8 text-center">
+        <ButtonWithHover label="Atendimento" />
+        <ButtonWithHover label="Cadastro" />
+      </div>
 
-            {/* imagem da esquerda*/}
-            <div className=" flex-1 flex justify-start">
-                <Image
-                    src={}
-                />
-
-            </div> 
-
-            {/*iteráveis no centro*/}
-            <div className=" flex-1 flex justify-center">
-
-            </div>
-
-            {/*imagem da direita*/}
-            <div className="flex-1 flex justify-end">
-
-            </div>
-        </div>
-
-
-
-    );
+      {/* Logo à direita */}
+      <div className="flex-none">
+        <Image
+          src={Buttongroup}
+          alt="feito com amor pelo Citi"
+          className="w-[150px] h-[16px] object-contain"
+        />
+      </div>
+    </div>
+  );
 };
+
+const ButtonWithHover = ({ label }: { label: string }) => (
+  <button className="relative group pb-1">
+    <span className="text-lg font-medium text-gray-800 transition-colors group-hover:text-gray-900">
+      {label}
+    </span>
+    <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-green-500 transition-all duration-300 group-hover:w-full" />
+  </button>
+);
+
+export default TopBar; 
