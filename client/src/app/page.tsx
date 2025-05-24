@@ -1,10 +1,13 @@
 import Image from "next/image";
-
-import { LogoCITi } from "../assets";
+import TopBar from "@/components/TopBar";
+import { LogoCITi } from "@/assets";
 
 export default function Home() {
   return (
     <div className="flex flex-1 flex-col h-full justify-around items-center bg-black">
+      <div>
+        <TopBar/>
+      </div>
       <div>
         <Image src={LogoCITi} alt="Logo citi" />
       </div>
