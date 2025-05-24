@@ -10,14 +10,14 @@ const TopBar = () => {
         <Image
           src={Logopet} 
           alt="logo do citi pet"
-          className="w-[150px] h-[50px] object-contain"
+          className="w-[140px] h-[50px] object-contain"
         />
       </div>
 
       {/* Botões centrais */}
       <div className="flex-1 flex justify-center gap-8 text-center">
         <ButtonWithHover label="Atendimento" />
-        <ButtonWithHover label="Cadastro" />
+        <ButtonWithHover label="Cadastro"/>
       </div>
 
       {/* Logo à direita */}
@@ -33,11 +33,11 @@ const TopBar = () => {
 };
 
 const ButtonWithHover = ({ label }: { label: string }) => (
-  <button className="relative group pb-1">
-    <span className="text-lg font-medium text-gray-800 transition-colors group-hover:text-gray-900">
+  <button className="relative group pb-1 px-2">
+    <span className=" text-xs font-medium text-gray-700 transition-colors group-hover:text-gray-900">
       {label}
     </span>
-    <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-green-500 transition-all duration-300 group-hover:w-full" />
+    <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-green-500 transition-all duration-300 group-hover:w-full" />
   </button>
 );
 

@@ -5,7 +5,7 @@ import { Buttongroup,Logopet } from "@/assets";
 
 export default function Home() {
   return (
-    <div className="flex flex-1 flex-col min-h-screen  items-center bg-black">
+    <div className="flex flex-1 flex-col min-h-screen  items-center bg-white">
       <div className = "w-full">
         <TopBar />
       </div>
