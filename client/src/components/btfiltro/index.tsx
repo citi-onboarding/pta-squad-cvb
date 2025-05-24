@@ -13,7 +13,7 @@ export default function BtFiltro({ ativo, setAtivo }: BtFiltroProps) {
         <button
           onClick={() => setAtivo("Historico")}
           className={`flex-1 rounded-xl transition-all w-[92px] h-[42px] font-sf ${
-            ativo === "historico" ? "bg-white" : "bg-btfiltro"
+            ativo === "Historico" ? "bg-white" : "bg-btfiltro"
           }`}
         >
           historico
