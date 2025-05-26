@@ -1,11 +1,50 @@
+"use client";
 import React from "react";
 import Image from "next/image";
+import { useState } from "react";
 import { LogotipoSVG } from "@/assets";
 import { pataSVG } from "@/assets";
 import { calendar } from "@/assets";
 import { alarm } from "@/assets";
 import { Botaoclose } from "@/assets";
+
+
+
+const formatDateInput = (valorDigitado) => {
+  // 1. Remove TUDO que não for número (deixa só dígitos)
+  let apenasNumeros = '';
+  for (let char of valorDigitado) {
+    if ('0123456789'.includes(char)) {
+      apenasNumeros += char;
+    }
+  }
+
+  // 2. Limita a 8 caracteres (DDMMYYYY)
+  if (apenasNumeros.length > 8) {
+    apenasNumeros = apenasNumeros.slice(0, 8);
+  }
+
+  // 3. Formata com barras
+  let parteDia = apenasNumeros.slice(0, 2);
+  let parteMes = apenasNumeros.slice(2, 4);
+  let parteAno = apenasNumeros.slice(4, 8);
+
+  // Monta o resultado conforme o tamanho
+  if (apenasNumeros.length > 4) {
+    return `${parteDia}/${parteMes}/${parteAno}`;
+  } else if (apenasNumeros.length > 2) {
+    return `${parteDia}/${parteMes}`;
+  } else {
+    return parteDia;
+  }
+};
+
+
 const ConsultaForm = () => {
+  const [date, setDate] = useState(''); {/* date é onde eu guardo o que vai ser digitado, setDate permite setar date e useState inicia a caixa como vazia */}
+  const handleDateChange = (input) => {
+    setDate(formatDateInput(input.target.value));
+  };
   return (
     <div className="relative w-[800px] mx-auto p-[45px] bg-white rounded-[20px] border border-gray-200 shadow-sm">
       {/* parte de cima*/}
@@ -64,7 +103,10 @@ const ConsultaForm = () => {
             />
             <input
               type="text"
+              value={date}
+              onChange={handleDateChange} /* quando tiver uma mudança = digitação ele  */
               placeholder="dd/mm/aa"
+              maxLength={10}
               className="w-full p-3 pl-5 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
@@ -103,5 +145,9 @@ const ConsultaForm = () => {
     </div>
   );
 };
+
+
+
+
 
 export default ConsultaForm;
