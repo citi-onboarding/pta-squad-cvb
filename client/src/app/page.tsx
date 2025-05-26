@@ -1,7 +1,19 @@
 import Image from "next/image";
+
 import TopBar from "@/components/TopBar";
 import { LogoCITi } from "@/assets";
 import { Buttongroup,Logopet } from "@/assets";
+
+import { cat1 } from "@/assets";
+import { cat2 } from "@/assets";
+import { cat3 } from "@/assets";
+import { cat4 } from "@/assets";
+import { cat5 } from "@/assets";
+import { cat6 } from "@/assets";
+
+import { LogoCITi } from "../assets";
+import PetCard from "@/components/pet-card";
+
 
 export default function Home() {
   return (
