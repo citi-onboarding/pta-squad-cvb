@@ -34,7 +34,7 @@ const TopBar = () => {
 
 const ButtonWithHover = ({ label }: { label: string }) => (
   <button className="relative group pb-1 px-2">
-    <span className=" text-xs font-medium text-gray-700 transition-colors group-hover:text-gray-900">
+    <span className=" text-sm font-medium text-gray-700 transition-colors group-hover:text-gray-900">
       {label}
     </span>
     <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-green-500 transition-all duration-300 group-hover:w-full" />
