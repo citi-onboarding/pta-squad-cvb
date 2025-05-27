@@ -10,7 +10,7 @@ import { Botaoclose } from "@/assets";
 
 
 
-const formatDateInput = (valorDigitado) => {
+const formatDateInput = (valorDigitado:string) => {
   // 1. Remove TUDO que não for número (deixa só dígitos)
   let apenasNumeros = '';
   for (let char of valorDigitado) {
@@ -42,7 +42,7 @@ const formatDateInput = (valorDigitado) => {
 
 const ConsultaForm = () => {
   const [date, setDate] = useState(''); {/* date é onde eu guardo o que vai ser digitado, setDate permite setar date e useState inicia a caixa como vazia */}
-  const handleDateChange = (input) => {
+  const handleDateChange = (input: React.ChangeEvent<HTMLInputElement>) => {
     setDate(formatDateInput(input.target.value));
   };
   return (
