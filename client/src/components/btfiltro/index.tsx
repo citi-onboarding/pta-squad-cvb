@@ -16,7 +16,7 @@ export default function BtFiltro({ ativo, setAtivo }: BtFiltroProps) {
             ativo === "agendamento" ? "bg-white" : "bg-btfiltro"
           }`}
         >
-          agendamento
+          Agendamento
         </button>
 
         <button
@@ -25,7 +25,7 @@ export default function BtFiltro({ ativo, setAtivo }: BtFiltroProps) {
             ativo === "Historico" ? "bg-white" : "bg-btfiltro"
           }`}
         >
-          historico
+          Histórico
         </button>
       </div>
     </div>

@@ -204,7 +204,7 @@ export default function disporcards() {
               onChange={(e) =>
                 setDataInicio(formatardata(e.target.value, dataInicio))
               }
-              className="w-[125px] h-[56px] rounded-xl border-2 border-gray-300"
+              className="w-[125px] h-[56px] rounded-xl border-2 border-gray-300 pl-1"
             />
             <Image
               src={calendario}
@@ -222,7 +222,7 @@ export default function disporcards() {
               onChange={(e) =>
                 setDataFim(formatardata(e.target.value, dataFim))
               }
-              className="w-[125px] h-[56px] rounded-xl border-2 border-gray-300"
+              className="w-[125px] h-[56px] rounded-xl border-2 border-gray-300 pl-1"
             />
             <Image
               src={calendario}
