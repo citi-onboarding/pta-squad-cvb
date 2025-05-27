@@ -16,8 +16,8 @@ import { cat6 } from "@/assets";
 
 // ... (importações iguais)
 
-export default function gg() {
-  const [ativo, setAtivo] = useState("Historico");
+export default function disporcards() {
+  const [ativo, setAtivo] = useState("agendamento");
 
   const cardsMock: PetCardProps[] = [
     {
@@ -25,7 +25,7 @@ export default function gg() {
       nomepet: "Rex",
       nomedono: "João",
       nomedr: "Dra. Ana",
-      data: "22/05",
+      data: "10/05",
       horario: "14:00",
       imagem: cat1,
     },
@@ -34,7 +34,7 @@ export default function gg() {
       nomepet: "Mia",
       nomedono: "Carla",
       nomedr: "Dr. Pedro",
-      data: "23/05",
+      data: "11/05",
       horario: "10:30",
       imagem: cat2,
     },
@@ -43,7 +43,7 @@ export default function gg() {
       nomepet: "Thor",
       nomedono: "Lucas",
       nomedr: "Dra. Julia",
-      data: "24/05",
+      data: "12/05",
       horario: "16:00",
       imagem: cat3,
     },
@@ -52,7 +52,7 @@ export default function gg() {
       nomepet: "Rex",
       nomedono: "João",
       nomedr: "Dra. Ana",
-      data: "22/05",
+      data: "13/05",
       horario: "14:00",
       imagem: cat1,
     },
@@ -61,7 +61,7 @@ export default function gg() {
       nomepet: "Mia",
       nomedono: "Carla",
       nomedr: "Dr. Pedro",
-      data: "23/05",
+      data: "14/05",
       horario: "10:30",
       imagem: cat2,
     },
@@ -70,7 +70,7 @@ export default function gg() {
       nomepet: "Thor",
       nomedono: "Lucas",
       nomedr: "Dra. Julia",
-      data: "24/05",
+      data: "15/05",
       horario: "16:00",
       imagem: cat3,
     },
@@ -79,7 +79,7 @@ export default function gg() {
       nomepet: "Thor",
       nomedono: "Lucas",
       nomedr: "Dra. Julia",
-      data: "21/05",
+      data: "10/05",
       horario: "16:00",
       imagem: cat3,
     },
@@ -88,7 +88,7 @@ export default function gg() {
       nomepet: "Thor",
       nomedono: "Lucas",
       nomedr: "Dra. Julia",
-      data: "24/05",
+      data: "11/05",
       horario: "16:00",
       imagem: cat3,
     },
@@ -97,7 +97,7 @@ export default function gg() {
       nomepet: "Thor",
       nomedono: "Lucas",
       nomedr: "Dra. Julia",
-      data: "28/05",
+      data: "12/05",
       horario: "16:00",
       imagem: cat3,
     },
@@ -106,7 +106,7 @@ export default function gg() {
       nomepet: "Thor",
       nomedono: "Lucas",
       nomedr: "Dra. Julia",
-      data: "24/05",
+      data: "13/05",
       horario: "16:00",
       imagem: cat3,
     },
@@ -114,6 +114,34 @@ export default function gg() {
 
   const [dataInicio, setDataInicio] = useState("");
   const [dataFim, setDataFim] = useState("");
+
+  function formatardata(novoValor: string, valorAnterior: string) {
+    const estaApagando = novoValor.length < valorAnterior.length;
+    const digitos = novoValor.replace(/\D/g, "").slice(0, 6); // máx 6: ddmmaa
+    const n = digitos.length;
+    if (n === 0) return "";
+
+    let saida = "";
+
+    if (n <= 2) {
+      //ta digitando o dia
+      // 1 → "1", 11 → "11/"
+      saida = digitos + (!estaApagando && n === 2 ? "/" : ""); //se nao esta apagando e ja tem 2 digitos de dia ja, coloca a /
+    } else if (n <= 4) {
+      //se a string tem mais de 2 digitos
+      // 110  → "11/0", 1105 → "11/05/"
+      saida = `${digitos.slice(0, 2)}/${digitos.slice(2)}`; //pega a string de dia vetor[0,1], coloca a barra e adiciona tudo q vem dps da barra da string dd/mm
+      if (!estaApagando && n === 4) saida += "/"; //se nao esta apagando e a string "ddmmaa" tem exatamente 4 digitos, adiciona a / na saida dd/mm/
+    } else {
+      //aqui so entra se estiver escrevendo o ano
+      // 11052  → "11/05/2", 110525 → "11/05/25"
+      saida = `${digitos.slice(0, 2)}/${digitos.slice(2, 4)}/${digitos.slice(
+        4
+      )}`;
+    } //aqui eu basicamente vou ter um vetor de digitos de tamanho 6 que sera ddmmaa sem as barras e uma saida que sera construida colocando essas barras alem de uma variavel n que diz a qtd de digitos digitados
+
+    return saida;
+  }
 
   function parseDataBR(dataStr: string): Date | null {
     const partes = dataStr.split("/");
@@ -173,7 +201,9 @@ export default function gg() {
               type="text"
               placeholder="dd/mm/aa"
               value={dataInicio}
-              onChange={(evento) => setDataInicio(evento.target.value)}
+              onChange={(e) =>
+                setDataInicio(formatardata(e.target.value, dataInicio))
+              }
               className="w-[125px] h-[56px] rounded-xl border-2 border-gray-300"
             />
             <Image
@@ -189,7 +219,9 @@ export default function gg() {
               type="text"
               placeholder="dd/mm/aa"
               value={dataFim}
-              onChange={(evento) => setDataFim(evento.target.value)}
+              onChange={(e) =>
+                setDataFim(formatardata(e.target.value, dataFim))
+              }
               className="w-[125px] h-[56px] rounded-xl border-2 border-gray-300"
             />
             <Image
