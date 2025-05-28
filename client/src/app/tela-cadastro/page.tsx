@@ -200,7 +200,7 @@ export default function TelaCadastro(){
                 {/* botão de finalização */}
                 <div className="flex justify-end mt-[30px]">
                     <button
-                    className="w-full py-3 px-4 text-white font-medium rounded-[24px] transition duration-200 w-[205px] h-[48px]"
+                    className=" py-3 px-4 text-white font-medium rounded-[24px] transition duration-200 w-[205px] h-[48px]"
                     style={{ backgroundColor: '#50E678' }}
                     >
                         Finalizar cadastro
