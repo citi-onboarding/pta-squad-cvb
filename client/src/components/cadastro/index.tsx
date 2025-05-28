@@ -1,14 +1,15 @@
 import React from 'react';
-import MeuComponente from './MeuComponente';
 
 export default function CardEmail() {
   return (
     <div className="bg-white w-96 h-auto shadow-xl rounded-3xl p-12 flex-col items-center justify-center relative">
-      <MeuComponente />
+      <div className="flex items-center justify-center mb-6">
+        <img src="/img/CITiPet.png" alt="Logo CITi Pet" className="h-auto justify-center" />
+      </div>
       <button className="w-6 h-6 rounded text-xl font-light top-4 right-4 absolute hover:bg-gray-300 ">
         &#10005;
       </button>
-      <h1 className="text-center text-base w-64 mb-6">
+      <h1 className="text-center text-base w-full mb-6">
         <strong>Cadastro finalizado!</strong> Envie o comprovante para o <strong>tutor</strong>
       </h1>
       <label className="text-base font-bold mb-6">Email</label>

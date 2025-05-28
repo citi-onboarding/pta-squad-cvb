@@ -1,5 +1,5 @@
 import Image from "next/image";
-import CardEmail from "@/components/cadastro/cadastro";
+import CardEmail from "@/components/cadastro/index";
 
 import { LogoCITi } from "../assets";
 
