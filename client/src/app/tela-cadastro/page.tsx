@@ -9,6 +9,27 @@ import { cat1,cachorro,cat3,cat4,cat5,cat6,calendar,alarm } from "@/assets";
 
 
 
+const formattimeInput =(tempoDigitado:string) => {
+
+ let apenasNumeros = '';
+  for (let char of tempoDigitado) {
+    if ('0123456789'.includes(char)) {
+      apenasNumeros += char;
+    }
+}
+
+    if(apenasNumeros.length > 4){
+        apenasNumeros = apenasNumeros.slice(0,4);
+    }
+
+    if (apenasNumeros.length > 2){
+        return `${apenasNumeros.slice(0,2)}:${apenasNumeros.slice(2)}`;
+    }else{
+        return apenasNumeros;
+    }
+  };
+
+
 
 const formatDateInput = (valorDigitado:string) => {
   // 1. Remove TUDO que não for número (deixa só dígitos)
@@ -45,6 +66,12 @@ export default function TelaCadastro(){
     const handleDateChange = (input: React.ChangeEvent<HTMLInputElement>) => {
         setDate(formatDateInput(input.target.value));
     };
+
+    const [time, setTime] = useState(''); // Novo estado para o horário
+
+    const handleTimeChange = (input: React.ChangeEvent<HTMLInputElement>) => {
+        setTime(formattimeInput(input.target.value));
+        };
     return(
         <div className="flex flex-col items-start  min-h-screen bg-white">
             <div className="w-full">
@@ -178,9 +205,11 @@ export default function TelaCadastro(){
                                 />
                                 <input
                                     type="text"
+                                    value={time}
+                                    onChange={handleTimeChange}
                                     placeholder="00:00"
-                                    className="w-full   border-2 border-gray-500 rounded-[8px]  h-[40px] flex items-center
-                                focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-400 pl-3"
+                                    maxLength={5} // Permite "00:00" (5 caracteres)
+                                    className="w-full border-2 border-gray-500 rounded-[8px] h-[40px] flex items-center focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-400 pl-3"
                                 />
                             </div>
                         </div>
