@@ -16,7 +16,9 @@ import Botaoclose from "./Botão-close.svg"
 
 import  LogoCITiPet from "./ LogoCITiPet.svg";
 import  CITiPet from "./ LogoCITiPet.png";
+import calendario from "./calendario.svg";
 
+export { calendario };
 export { LogoCITiPet }
 export { CITiPet }
 

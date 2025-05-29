@@ -28,6 +28,7 @@ module.exports = {
         vacinacao: "#AAE1FF",
         checkup: "#9CFF95",
         historico: "#F0F0F0",
+        btfiltro: "#F0F0F0",
 
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
