@@ -1,11 +1,11 @@
 "use client";
 import Image from "next/image";
-import TopBar from "@/components/TopBar";
+import TopBar from "@/components/topbar/index";
 import { useState } from "react";
 import { LogoCITi } from "@/assets";
 import { Buttongroup,Logopet } from "@/assets";
-import { SetaVoltar } from "@/assets";
-import { boi,cachorro,cavalo,gato,ovelha,porco,calendario,relogio } from "@/assets";
+import {SetaVoltar} from "@/assets";
+import { cat1,cachorro,cat3,cat4,cat5,cat6,calendar,alarm } from "@/assets";
 
 
 
@@ -87,11 +87,11 @@ export default function TelaCadastro(){
                     <h2 className="font-bold">Qual é a espécie do paciente?</h2>
                     <div className="mt-[15px] flex flex-row gap-[35px]">
                         {[ 
-                            { id: "ovelha", src: ovelha, alt: "imagem de ovelha" },
-                            { id: "gato", src: gato, alt: "imagem de gato" },
-                            { id: "porco", src: porco, alt: "imagem de porco" },
-                            { id: "boi", src: boi, alt: "imagem de boi" },
-                            { id: "cavalo", src: cavalo, alt: "imagem de cavalo" },
+                            { id: "ovelha", src: cat1, alt: "imagem de ovelha" },
+                            { id: "gato", src: cat4, alt: "imagem de gato" },
+                            { id: "porco", src: cat3, alt: "imagem de porco" },
+                            { id: "boi", src: cat5, alt: "imagem de boi" },
+                            { id: "cavalo", src: cat6, alt: "imagem de cavalo" },
                             { id: "cachorro", src: cachorro, alt: "imagem de cachorro" }
                         ].map((img) => (
                             <div
@@ -152,7 +152,7 @@ export default function TelaCadastro(){
                             <label className="block text-gray-1000 font-medium mb-2 font-bold">Data do atendimento</label>
                             <div className="relative">
                                 <img 
-                                    src={calendario.src} 
+                                    src={calendar.src} 
                                     alt="Ícone calendário" 
                                     className="w-5 h-5 absolute right-3 top-1/2 transform -translate-y-1/2" 
                                 />
@@ -172,7 +172,7 @@ export default function TelaCadastro(){
                             <label className="block text-gray-1000 font-medium mb-2 font-bold">Horário do atendimento</label>
                             <div className="relative">
                                 <img 
-                                    src={relogio.src} 
+                                    src={alarm.src} 
                                     alt="Ícone relógio" 
                                     className="w-5 h-5 absolute right-3 top-1/2 transform -translate-y-1/2" 
                                 />
