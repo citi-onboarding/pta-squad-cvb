@@ -3,17 +3,17 @@ import { SvgProps } from "react-native-svg";
 import { FC } from "react";
 import { alarmmobilepng } from "@assets";
 
-export interface PetCardProps {
+export interface PetCardmbProps {
   type: "Primeira consulta" | "Vacinacao" | "Checkup" | "Retorno" | "Historico";
   nomepet: string;
   nomedono: string;
   nomedr: string;
   data: string;
   horario: string;
-  imagem: ImageSourcePropType | FC<SvgProps>; // permite tanto imagem quanto componente SVG
+  imagem: FC<SvgProps>;
 }
 
-export default function PetCard(props: PetCardProps) {
+export default function PetCard(props: PetCardmbProps) {
   switch (props.type) {
     case "Primeira consulta":
       return (
