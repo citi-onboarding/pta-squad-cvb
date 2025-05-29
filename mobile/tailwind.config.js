@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import nativewindPreset from "nativewind/preset";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
 export default {
   // NOTE: Update this to include the paths to all of your component files.
@@ -7,7 +8,17 @@ export default {
   presets: [nativewindPreset],
   theme: {
     extend: {
+      colors: {
+        retorno: "#FF641999",
+        primeiraconsulta: "#BFB5FF",
+        vacinacao: "#AAE1FF",
+        checkup: "#9CFF95",
+        historico: "#F0F0F0",
+        btfiltro: "#F0F0F0",
+      },
+
       fontFamily: {
+        sf: ['"SF Pro Display"', "sans-serif"],
         barlowThin: ["Barlow_100Thin"],
         barlowLight: ["Barlow_300Light"],
         barlowRegular: ["Barlow_400Regular"],
