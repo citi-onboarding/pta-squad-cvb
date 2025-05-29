@@ -8,6 +8,25 @@ import { calendar } from "@/assets";
 import { alarm } from "@/assets";
 import { Botaoclose } from "@/assets";
 
+const formattimeInput =(tempoDigitado:string) => {
+
+ let apenasNumeros = '';
+  for (let char of tempoDigitado) {
+    if ('0123456789'.includes(char)) {
+      apenasNumeros += char;
+    }
+}
+
+    if(apenasNumeros.length > 4){
+        apenasNumeros = apenasNumeros.slice(0,4);
+    }
+
+    if (apenasNumeros.length > 2){
+        return `${apenasNumeros.slice(0,2)}:${apenasNumeros.slice(2)}`;
+    }else{
+        return apenasNumeros;
+    }
+  };
 
 
 const formatDateInput = (valorDigitado:string) => {
@@ -45,6 +64,13 @@ const ConsultaForm = () => {
   const handleDateChange = (input: React.ChangeEvent<HTMLInputElement>) => {
     setDate(formatDateInput(input.target.value));
   };
+
+  const [time, setTime] = useState(''); // Novo estado para o horário
+
+  const handleTimeChange = (input: React.ChangeEvent<HTMLInputElement>) => {
+    setTime(formattimeInput(input.target.value));
+    };
+
   return (
     <div className="relative w-[800px] mx-auto p-[45px] bg-white rounded-[20px] border border-gray-200 shadow-sm">
       {/* parte de cima*/}
@@ -123,7 +149,10 @@ const ConsultaForm = () => {
             />
             <input
               type="text"
+              value={time}
+              onChange={handleTimeChange}
               placeholder="00:00"
+              maxLength={5} // Permite "00:00" (5 caracteres)
               className="w-full p-3 pl-5 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
