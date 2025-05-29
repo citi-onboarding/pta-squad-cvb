@@ -13,15 +13,13 @@ import pataSVG from "./pataSVG.svg"
 import alarm from "./clock.svg"
 import calendar from "./calendar_month.svg"
 import Botaoclose from "./Botão-close.svg"
+import  LogoCITiPet from "./Logo CITi Pet.svg";
 
-import  LogoCITiPet from "./ LogoCITiPet.svg";
-import  CITiPet from "./ LogoCITiPet.png";
-import calendario from "./calendario.svg";
 
-export { calendario };
+
+
+
 export { LogoCITiPet }
-export { CITiPet }
-
 export { LogoCITi };
 export{ Logopet };
 export{ Buttongroup };
