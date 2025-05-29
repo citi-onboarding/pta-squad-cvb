@@ -1,6 +1,8 @@
 import Image from "next/image";
 import TopBar from "@/components/topbar";
 import { LogoCITi } from "@/assets";
+import ConsultaForm  from "@/components/consulta";
+import ConsultaCard from "@/components/ConsultaCard"
 
 export default function Home() {
   return (

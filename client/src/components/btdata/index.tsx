@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { calendario } from "@/assets";
+import { calendar } from "@/assets";
 
 export default function Inputdata() {
   return (
@@ -10,7 +10,7 @@ export default function Inputdata() {
         className="w-[125px] h-[56px] rounded-xl border-2 border-gray-300"
       />
       <Image
-        src={calendario}
+        src={calendar}
         alt=""
         className="ml-auto mt-[-40px] mr-[8px]"
       ></Image>
