@@ -6,13 +6,14 @@ import BtFiltro from "@/components/btfiltro";
 import { PetCardProps } from "@/components/pet-card";
 import Inputdata from "@/components/btdata";
 
-import { calendario } from "@/assets";
-import { cat1 } from "@/assets";
-import { cat2 } from "@/assets";
-import { cat3 } from "@/assets";
-import { cat4 } from "@/assets";
-import { cat5 } from "@/assets";
-import { cat6 } from "@/assets";
+import {calendar } from "@/assets";
+import { sheep } from "@/assets";
+import { horse } from "@/assets";
+import { pig } from "@/assets";
+import { cat } from "@/assets";
+import { cow } from "@/assets";
+import { cachorro } from "@/assets";
+
 
 // ... (importações iguais)
 
@@ -27,7 +28,7 @@ export default function disporcards() {
       nomedr: "Dra. Ana",
       data: "10/05",
       horario: "14:00",
-      imagem: cat1,
+      imagem: sheep,
     },
     {
       type: "Checkup",
@@ -36,7 +37,7 @@ export default function disporcards() {
       nomedr: "Dr. Pedro",
       data: "11/05",
       horario: "10:30",
-      imagem: cat2,
+      imagem: cachorro,
     },
     {
       type: "Vacinacao",
@@ -45,7 +46,7 @@ export default function disporcards() {
       nomedr: "Dra. Julia",
       data: "12/05",
       horario: "16:00",
-      imagem: cat3,
+      imagem: pig,
     },
     {
       type: "Primeira consulta",
@@ -54,7 +55,7 @@ export default function disporcards() {
       nomedr: "Dra. Ana",
       data: "13/05",
       horario: "14:00",
-      imagem: cat1,
+      imagem: sheep,
     },
     {
       type: "Checkup",
@@ -63,7 +64,7 @@ export default function disporcards() {
       nomedr: "Dr. Pedro",
       data: "14/05",
       horario: "10:30",
-      imagem: cat2,
+      imagem: cachorro,
     },
     {
       type: "Vacinacao",
@@ -72,7 +73,7 @@ export default function disporcards() {
       nomedr: "Dra. Julia",
       data: "15/05",
       horario: "16:00",
-      imagem: cat3,
+      imagem: pig,
     },
     {
       type: "Historico",
@@ -81,7 +82,7 @@ export default function disporcards() {
       nomedr: "Dra. Julia",
       data: "10/05",
       horario: "16:00",
-      imagem: cat3,
+      imagem: pig,
     },
     {
       type: "Historico",
@@ -90,7 +91,7 @@ export default function disporcards() {
       nomedr: "Dra. Julia",
       data: "11/05",
       horario: "16:00",
-      imagem: cat3,
+      imagem: pig,
     },
     {
       type: "Historico",
@@ -99,7 +100,7 @@ export default function disporcards() {
       nomedr: "Dra. Julia",
       data: "12/05",
       horario: "16:00",
-      imagem: cat3,
+      imagem: pig,
     },
     {
       type: "Vacinacao",
@@ -108,7 +109,7 @@ export default function disporcards() {
       nomedr: "Dra. Julia",
       data: "13/05",
       horario: "16:00",
-      imagem: cat3,
+      imagem: pig,
     },
   ];
 
@@ -207,7 +208,7 @@ export default function disporcards() {
               className="w-[125px] h-[56px] rounded-xl border-2 border-gray-300 pl-1"
             />
             <Image
-              src={calendario}
+              src={calendar}
               alt=""
               className="ml-auto mt-[-40px] mr-[8px]"
             />
@@ -225,7 +226,7 @@ export default function disporcards() {
               className="w-[125px] h-[56px] rounded-xl border-2 border-gray-300 pl-1"
             />
             <Image
-              src={calendario}
+              src={calendar}
               alt=""
               className="ml-auto mt-[-40px] mr-[8px]"
             />
