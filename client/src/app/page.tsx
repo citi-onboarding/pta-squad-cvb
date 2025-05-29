@@ -1,3 +1,4 @@
+import Image from "next/image";
 import TopBar from "@/components/topbar";
 import { LogoCITi } from "@/assets";
 
@@ -20,5 +21,4 @@ export default function Home() {
     </div>
   );
 }
-
 

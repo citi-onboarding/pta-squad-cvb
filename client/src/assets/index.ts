@@ -14,6 +14,12 @@ import alarm from "./clock.svg"
 import calendar from "./calendar_month.svg"
 import Botaoclose from "./Botão-close.svg"
 
+import  LogoCITiPet from "./ LogoCITiPet.svg";
+import  CITiPet from "./ LogoCITiPet.png";
+
+export { LogoCITiPet }
+export { CITiPet }
+
 export { LogoCITi };
 export{ Logopet };
 export{ Buttongroup };
@@ -24,8 +30,8 @@ export { cat3 };
 export { cat4 };
 export { cat5 };
 export { cat6 };
-export{ Botaoclose };
-export{ LogotipoSVG };
-export{ calendar };
-export{ alarm };
-export{ pataSVG };
+export { Botaoclose };
+export { LogotipoSVG };
+export { calendar };
+export { alarm };
+export { pataSVG };
