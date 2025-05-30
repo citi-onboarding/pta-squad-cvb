@@ -70,13 +70,7 @@ const App: React.FC = () => (
       <Logocitipet width={120} height={40} className="w-[143px] h[54px]" />
     </View>
 
-    <View className="rounded-2xl w-[252px] h-[70px] mt-[39px] flex-row flex justify-around items-center shadow-lg p-4">
-      <Sol />
-      <Nuvem />
-      <Lua />
-    </View>
-
-    <View className="w-[358px] mt-[39px]">
+    <View className="w-[340px] mt-[39px]">
       <Text className="text-xl font-barlowBold mr-auto">Sua agenda</Text>
 
       <Text className="text-sm font-barlow mt-[8px]">
@@ -84,7 +78,16 @@ const App: React.FC = () => (
       </Text>
     </View>
 
-    <ScrollView contentContainerStyle={{ gap: 16, alignItems: "center" }}>
+    <View className="rounded-full w-[252px] h-[70px] mt-[39px] flex-row flex justify-around items-center shadow-lg p-4">
+      <Sol />
+      <Nuvem />
+      <Lua />
+    </View>
+
+    <ScrollView
+      contentContainerStyle={{ gap: 16, alignItems: "center" }}
+      className="mt-[39px]"
+    >
       {cardsMock.map((item, idx) => (
         <PetCardMobile key={idx} {...item} />
       ))}
