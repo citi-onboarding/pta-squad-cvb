@@ -26,8 +26,8 @@ export default function PetCard(props: PetCardmbProps) {
             <Text className="font-bold mt-[6px] text-center">{props.data}</Text>
             <Text className="font-bold text-center">{props.horario}</Text>
           </View>
-          <View className="flex-col">
-            <View className="flex-row">
+          <View className="flex-col ml-[15px]">
+            <View className="flex-row mb-[6px]">
               <Text className="ml-[20px] font-bold">{props.nomedono}</Text>
               <Text className="ml-[0px]">/{props.nomepet}</Text>
             </View>
@@ -67,10 +67,10 @@ export default function PetCard(props: PetCardmbProps) {
             <Text className="font-bold mt-[6px] text-center">{props.data}</Text>
             <Text className="font-bold text-center">{props.horario}</Text>
           </View>
-          <View className="flex-col">
-            <View className="flex-row">
+          <View className="flex-col ml-[15px]">
+            <View className="flex-row mb-[6px]">
               <Text className="ml-[20px] font-bold">{props.nomedono}</Text>
-              <Text className="ml-[0px]">/{props.nomepet}</Text>
+              <Text className="">/{props.nomepet}</Text>
             </View>
             <Text className="ml-[20px]">{props.nomedr}</Text>
           </View>
@@ -108,8 +108,8 @@ export default function PetCard(props: PetCardmbProps) {
             <Text className="font-bold mt-[6px] text-center">{props.data}</Text>
             <Text className="font-bold text-center">{props.horario}</Text>
           </View>
-          <View className="flex-col">
-            <View className="flex-row">
+          <View className="flex-col ml-[15px]">
+            <View className="flex-row mb-[6px]">
               <Text className="ml-[20px] font-bold">{props.nomedono}</Text>
               <Text className="ml-[0px]">/{props.nomepet}</Text>
             </View>
@@ -149,8 +149,8 @@ export default function PetCard(props: PetCardmbProps) {
             <Text className="font-bold mt-[6px] text-center">{props.data}</Text>
             <Text className="font-bold text-center">{props.horario}</Text>
           </View>
-          <View className="flex-col">
-            <View className="flex-row">
+          <View className="flex-col ml-[15px]">
+            <View className="flex-row mb-[6px]">
               <Text className="ml-[20px] font-bold">{props.nomedono}</Text>
               <Text className="ml-[0px]">/{props.nomepet}</Text>
             </View>
@@ -190,8 +190,8 @@ export default function PetCard(props: PetCardmbProps) {
             <Text className="font-bold mt-[6px] text-center">{props.data}</Text>
             <Text className="font-bold text-center">{props.horario}</Text>
           </View>
-          <View className="flex-col">
-            <View className="flex-row">
+          <View className="flex-col ml-[15px]">
+            <View className="flex-row mb-[6px]">
               <Text className="ml-[20px] font-bold">{props.nomedono}</Text>
               <Text className="ml-[0px]">/{props.nomepet}</Text>
             </View>

@@ -4,6 +4,11 @@ import PetCardMobile from "../src/components/PetCardMobile";
 import { FlatList } from "react-native";
 import { ScrollView } from "react-native";
 
+import { Sol } from "@assets";
+import { Lua } from "@assets";
+import { Nuvem } from "@assets";
+
+import Logocitipet from "@assets/Logo CITi Pet.svg";
 import Cat1Svg from "@assets/cat1.svg";
 import Cat2Svg from "@assets/cat2.svg";
 import Cat3Svg from "@assets/cat3.svg";
@@ -40,7 +45,16 @@ const cardsMock: PetCardmbProps[] = [
     imagem: Cat3Svg,
   },
   {
-    type: "Primeira consulta",
+    type: "Retorno",
+    nomepet: "Rex",
+    nomedono: "João",
+    nomedr: "Dra. Ana",
+    data: "13/05",
+    horario: "14:00",
+    imagem: Cat4Svg,
+  },
+  {
+    type: "Historico",
     nomepet: "Rex",
     nomedono: "João",
     nomedr: "Dra. Ana",
@@ -51,10 +65,24 @@ const cardsMock: PetCardmbProps[] = [
 ];
 
 const App: React.FC = () => (
-  <View className="flex-1 justify-center items-center bg-gray-100">
-    <Text className="text-xl font-barlowBold text-[#58cbfb]">
-      Made with &lt; / &gt; and 🩵 by CITi
-    </Text>
+  <View className="flex-1 justify-center items-center bg-gray-100 ">
+    <View className="mt-[39px]">
+      <Logocitipet width={120} height={40} className="w-[143px] h[54px]" />
+    </View>
+
+    <View className="rounded-2xl w-[252px] h-[70px] mt-[39px] flex-row flex justify-around items-center shadow-lg p-4">
+      <Sol />
+      <Nuvem />
+      <Lua />
+    </View>
+
+    <View className="w-[358px] mt-[39px]">
+      <Text className="text-xl font-barlowBold mr-auto">Sua agenda</Text>
+
+      <Text className="text-sm font-barlow mt-[8px]">
+        Veja aqui todos os seus pacientes agendados para hoje.
+      </Text>
+    </View>
 
     <ScrollView contentContainerStyle={{ gap: 16, alignItems: "center" }}>
       {cardsMock.map((item, idx) => (

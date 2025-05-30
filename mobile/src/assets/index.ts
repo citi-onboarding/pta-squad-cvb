@@ -26,3 +26,14 @@ import alarmmobile from "./alarmmobile.svg";
 export { alarmmobile };
 
 export { citi };
+
+import logocitipet from "./Logo CITi Pet.svg";
+export { logocitipet };
+
+import Sol from "./sol.svg";
+import Nuvem from "./nuvem.svg";
+import Lua from "./lua.svg";
+
+export { Lua };
+export { Nuvem };
+export { Sol };
