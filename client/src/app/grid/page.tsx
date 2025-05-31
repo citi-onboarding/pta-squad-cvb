@@ -7,14 +7,12 @@ import { PetCardProps } from "@/components/pet-card";
 import Inputdata from "@/components/btdata";
 
 import { calendario } from "@/assets";
-import { cat1 } from "@/assets";
+import { sheep } from "@/assets";
 import { cat2 } from "@/assets";
-import { cat3 } from "@/assets";
-import { cat4 } from "@/assets";
-import { cat5 } from "@/assets";
-import { cat6 } from "@/assets";
-
-// ... (importações iguais)
+import { pig } from "@/assets";
+import { cat } from "@/assets";
+import { cow } from "@/assets";
+import { horse } from "@/assets";
 
 export default function disporcards() {
   const [ativo, setAtivo] = useState("agendamento");
@@ -27,7 +25,7 @@ export default function disporcards() {
       nomedr: "Dra. Ana",
       data: "10/05",
       horario: "14:00",
-      imagem: cat1,
+      imagem: sheep,
     },
     {
       type: "Checkup",
@@ -45,7 +43,7 @@ export default function disporcards() {
       nomedr: "Dra. Julia",
       data: "12/05",
       horario: "16:00",
-      imagem: cat3,
+      imagem: pig,
     },
     {
       type: "Primeira consulta",
@@ -54,7 +52,7 @@ export default function disporcards() {
       nomedr: "Dra. Ana",
       data: "13/05",
       horario: "14:00",
-      imagem: cat1,
+      imagem: sheep,
     },
     {
       type: "Checkup",
@@ -72,7 +70,7 @@ export default function disporcards() {
       nomedr: "Dra. Julia",
       data: "15/05",
       horario: "16:00",
-      imagem: cat3,
+      imagem: pig,
     },
     {
       type: "Historico",
@@ -81,7 +79,7 @@ export default function disporcards() {
       nomedr: "Dra. Julia",
       data: "10/05",
       horario: "16:00",
-      imagem: cat3,
+      imagem: pig,
     },
     {
       type: "Historico",
@@ -90,7 +88,7 @@ export default function disporcards() {
       nomedr: "Dra. Julia",
       data: "11/05",
       horario: "16:00",
-      imagem: cat3,
+      imagem: pig,
     },
     {
       type: "Historico",
@@ -99,7 +97,7 @@ export default function disporcards() {
       nomedr: "Dra. Julia",
       data: "12/05",
       horario: "16:00",
-      imagem: cat3,
+      imagem: pig,
     },
     {
       type: "Vacinacao",
@@ -108,7 +106,7 @@ export default function disporcards() {
       nomedr: "Dra. Julia",
       data: "13/05",
       horario: "16:00",
-      imagem: cat3,
+      imagem: pig,
     },
   ];
 

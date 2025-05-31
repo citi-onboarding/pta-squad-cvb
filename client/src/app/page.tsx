@@ -1,11 +1,11 @@
 import Image from "next/image";
 
-import { cat1 } from "@/assets";
+import { sheep } from "@/assets";
 import { cat2 } from "@/assets";
-import { cat3 } from "@/assets";
-import { cat4 } from "@/assets";
-import { cat5 } from "@/assets";
-import { cat6 } from "@/assets";
+import { pig } from "@/assets";
+import { cat } from "@/assets";
+import { cow } from "@/assets";
+import { horse } from "@/assets";
 
 import { LogoCITi } from "../assets";
 import PetCard from "@/components/pet-card";
@@ -24,7 +24,7 @@ export default function Home() {
         nomedr="Dr. x"
         data="20/05"
         horario="18:30"
-        imagem={cat1}
+        imagem={sheep}
       />
 
       <div className="flex flex-col justify-center items-center">
