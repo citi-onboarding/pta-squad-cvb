@@ -15,10 +15,10 @@ import Botaoclose from "./Botão-close.svg"
 import  LogoCITiPet from "./Logo CITi Pet.svg";
 import cachorro from "./cachorro.png";
 import SetaVoltar from "./SetaVoltar.svg";
+import arrow_back from "./arrow_back.svg"
 
 
-
-
+export {arrow_back}
 export {cachorro}
 export{SetaVoltar}
 export { LogoCITiPet }
