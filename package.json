@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@svgr/webpack": "^8.1.0"
+    "@svgr/webpack": "^8.1.0",
+    "cssnano": "^7.0.7"
   }
 }
