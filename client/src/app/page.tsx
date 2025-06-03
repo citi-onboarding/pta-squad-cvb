@@ -1,5 +1,5 @@
 import Image from "next/image";
-import CardEmail from "@/components/cadastro/index";
+import Pesquisa from "@/components/pesquisa/index"
 
 import { LogoCITi } from "../assets";
 
@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="flex flex-1 flex-col h-full justify-around items-center bg-black">
       <div>
-        <CardEmail />
+        <Pesquisa />
       </div>
       <div className="flex flex-col justify-center items-center">
         <h1 className="text-white text-4xl font-bold">NextJS Boilerplate</h1>
