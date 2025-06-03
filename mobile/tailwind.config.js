@@ -15,6 +15,7 @@ export default {
         checkup: "#9CFF95",
         historico: "#F0F0F0",
         btfiltro: "#F0F0F0",
+        verdebarra: "#50E678",
       },
 
       fontFamily: {

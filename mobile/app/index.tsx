@@ -1,4 +1,5 @@
 import { View, Text, Pressable } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { PetCardmbProps } from "../src/components/PetCardMobile";
 import PetCardMobile from "../src/components/PetCardMobile";
 import { FlatList } from "react-native";
@@ -83,7 +84,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <View className="flex-1 justify-center items-center bg-gray-100 ">
+    <View className="flex-1 h-full items-center bg-gray-100 ">
       <View className="mt-[39px]">
         <Logocitipet width={120} height={40} className="w-[143px] h[54px]" />
       </View>
@@ -132,14 +133,30 @@ const App: React.FC = () => {
         </Pressable>
       </View>
 
-      <ScrollView
-        contentContainerStyle={{ gap: 16, alignItems: "center" }}
-        className="mt-[39px]"
-      >
-        {filtrarPorHorario().map((item, idx) => (
-          <PetCardMobile key={idx} {...item} />
-        ))}
-      </ScrollView>
+      <View className="h-[440px]">
+        <ScrollView
+          contentContainerStyle={{ gap: 16, alignItems: "center" }}
+          className="mt-[39px]"
+        >
+          {filtrarPorHorario().map((item, idx) => (
+            <PetCardMobile key={idx} {...item} />
+          ))}
+        </ScrollView>
+      </View>
+
+      <SafeAreaView
+        className=""
+        style={{
+          position: "absolute",
+          left: 0,
+          right: 0,
+          bottom: -40,
+          backgroundColor: "#48D17C", // substitua pela sua cor ou classe Tailwind
+          borderTopLeftRadius: 20,
+          borderTopRightRadius: 20,
+          height: 75,
+        }}
+      />
     </View>
   );
 };
