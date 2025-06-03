@@ -1,15 +1,4 @@
 import Image from "next/image";
-<<<<<<< HEAD
-import Pesquisa from "@/components/pesquisa/index"
-
-import { LogoCITi } from "../assets";
-
-export default function Home() {
-  return (
-    <div className="flex flex-1 flex-col h-full justify-around items-center bg-black">
-      <div>
-        <Pesquisa />
-=======
 import TopBar from "@/components/topbar";
 import { LogoCITi } from "@/assets";
 
@@ -18,7 +7,6 @@ export default function Home() {
     <div className="flex flex-1 flex-col min-h-screen  items-center bg-white">
       <div className = "w-full">
         <TopBar />
->>>>>>> 2a921b938943042ad2679177fb47ccdc3cfa10c2
       </div>
       <div className="my-auto">
         <Image src={LogoCITi} alt="Logo citi" />
