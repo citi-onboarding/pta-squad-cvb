@@ -16,6 +16,6 @@ routes.post("/Consulta", controllerconsulta.create);
 routes.delete("/Consulta/:id", controllerconsulta.delete);
 routes.patch("/Consulta/:id", controllerconsulta.update);
 routes.get("/Consulta", controllerconsulta.get);
-routes.getByDonoAndPet("/Consulta", controllerconsulta.getByDonoAndPet);
+routes.get("/Consulta/:nomedono/:nomepet", controllerconsulta.getByDonoAndPet);
 
 export default routes;
