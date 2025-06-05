@@ -15,6 +15,9 @@ import {
   alarm,
   cat,
 } from "@/assets";
+import CardEmail from "@/components/cadastro";
+
+
 
 const formattimeInput = (tempoDigitado: string) => {
   let apenasNumeros = "";
@@ -70,6 +73,7 @@ export default function TelaCadastro() {
   const handleDateChange = (input: React.ChangeEvent<HTMLInputElement>) => {
     setDate(formatDateInput(input.target.value));
   };
+  const [showCadastroPopup, setShowCadastroPopup] = useState(false);
 
   const [time, setTime] = useState(""); // Novo estado para o horário
 
@@ -247,11 +251,18 @@ export default function TelaCadastro() {
         {/* botão de finalização */}
         <div className="flex justify-end mt-[30px]">
           <button
+            onClick={() => setShowCadastroPopup(true)}
             className=" py-3 px-4 text-white font-medium rounded-[24px] transition duration-200 w-[205px] h-[48px]"
             style={{ backgroundColor: "#50E678" }}
           >
             Finalizar cadastro
           </button>
+
+          {showCadastroPopup && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">                       
+              <CardEmail onClose={() => setShowCadastroPopup(false)} />
+            </div>
+          )}
         </div>
       </div>
     </div>
