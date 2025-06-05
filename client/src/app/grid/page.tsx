@@ -5,15 +5,16 @@ import { useState } from "react";
 import BtFiltro from "@/components/btfiltro";
 import { PetCardProps } from "@/components/pet-card";
 import Inputdata from "@/components/btdata";
+import TopBar from "@/components/topbar";
+import { SetaVoltar, xbotao } from "@/assets";
 
-import {calendar } from "@/assets";
+import { calendar } from "@/assets";
 import { sheep } from "@/assets";
 import { horse } from "@/assets";
 import { pig } from "@/assets";
 import { cat } from "@/assets";
 import { cow } from "@/assets";
 import { cachorro } from "@/assets";
-
 
 // ... (importações iguais)
 
@@ -191,9 +192,40 @@ export default function disporcards() {
   });
 
   return (
-    <div className="flex flex-1 flex-col h-full justify-around items-center bg-black">
-      <div className="flex w-[1532]">
-        <div className="mr-[1021px]">
+    <div className="flex flex-1 flex-col justify-around items-center bg-white">
+      <div className="w-full">
+        <TopBar />
+      </div>
+
+      <div className="flex-row flex items-center mt-[25px] mr-[1170px]">
+        <Image src={SetaVoltar} alt="setavoltar" />
+        <div className="font-sf font-bold text-4xl tracking-wide ">
+          Atendimento
+        </div>
+      </div>
+
+      <div className="font-sf text-lg mr-[1270px] mt-[15px] ">
+        Qual e o médico?
+      </div>
+
+      <div className="flex items-center mr-[765px]">
+        <input
+          type="text"
+          placeholder="Pesquise aqui..."
+          value={dataInicio}
+          onChange={(e) =>
+            setDataInicio(formatardata(e.target.value, dataInicio))
+          }
+          className="w-[520px] h-[50px] rounded-lg border-[1px] border-gray-400 pl-5 mr-[20px] mt-[10px]"
+        />
+
+        <button className="font-sf font-bold w-[116px] h-[42px] self-center rounded-full mt-[10px] shadow-md bg-btbuscar text-white">
+          Buscar
+        </button>
+      </div>
+
+      <div className="flex w-[1532] mt-[35px]">
+        <div className="mr-[921px]">
           <BtFiltro ativo={ativo} setAtivo={setAtivo} />
         </div>
         <div className="mr-[15px]">
@@ -233,11 +265,16 @@ export default function disporcards() {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-[24px]">
+      <div className="grid grid-cols-3 gap-[18px] mt-[40px] h-[258px] overflow-y-auto">
         {cardsfiltrados.map((conteudodoindicedoarray, indicedoarray) => (
           <PetCard key={indicedoarray} {...conteudodoindicedoarray} />
         ))}
       </div>
+
+      <button className="flex justify-center items-center font-sf font-bold w-[205px] h-[42px] self-center rounded-full mt-[25px] ml-auto mr-[50px] shadow-md bg-btnovaconsulta text-white ">
+        <Image src={xbotao} alt="" className="" />
+        <div className="ml-[12px]">Nova Consulta</div>
+      </button>
     </div>
   );
 }
