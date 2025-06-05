@@ -74,6 +74,17 @@ class controllerconsulta implements Crud {
     return response.status(httpStatus).send({ values });
   };
 
+  getByNomedr = async (request: Request, response: Response) => {
+    const { nomedr } = request.params;
+
+    if (!nomedr) {
+      return response.status(400).send({ message: "Parâmetros ausentes" });
+    }
+
+    const { httpStatus, values } = await this.citi.findByNomeDr(nomedr);
+    return response.status(httpStatus).json(values);
+  };
+
   delete = async (request: Request, response: Response) => {
     const { id } = request.params;
     const { httpStatus, messageFromDelete } = await this.citi.deleteValue(id);

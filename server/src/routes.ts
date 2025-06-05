@@ -17,5 +17,6 @@ routes.delete("/Consulta/:id", controllerconsulta.delete);
 routes.patch("/Consulta/:id", controllerconsulta.update);
 routes.get("/Consulta", controllerconsulta.get);
 routes.get("/Consulta/:nomedono/:nomepet", controllerconsulta.getByDonoAndPet);
+routes.get("/Consulta/:nomedr", controllerconsulta.getByNomedr);
 
 export default routes;
