@@ -28,7 +28,7 @@ model Consulta {
   nomepet String
   nomedono String
   nomedr String
-  idade Int
+  idade String
   tipodaconsulta String
   data String
   horario String
