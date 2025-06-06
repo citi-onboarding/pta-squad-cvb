@@ -1,12 +1,18 @@
 import React from 'react';
+import Link from 'next/link';
 
 export default function ConsultaCard() {
   return (
     <div className="w-full max-w-[650px] mx-auto bg-white p-12 rounded-xl ">
       <div className="flex mb-6">
-        <button className=" px-4 py-1 hover:bg-gray-50 font-bold text-2x1 font-stretch-ultra-condensed">
-          <img src="/img/arrow.png" className="w-4 h-6 object-contain" />
-        </button>
+        <Link
+          href={"/"}
+        >
+          <button className=" px-4 py-1 hover:bg-gray-50 font-bold text-2x1 font-stretch-ultra-condensed">
+            <img src="/img/arrow.png" className="w-4 h-6 object-contain" />
+          </button>
+        </Link>
+        
         <h1 className="text-5xl font-bold ">Detalhes da Consulta</h1>
       </div>
 

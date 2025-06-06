@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import TopBar from "@/components/topbar/index";
 import { useState } from "react";
 import { LogoCITi } from "@/assets";
@@ -88,13 +89,18 @@ export default function TelaCadastro() {
 
       <div className=" flex flex-col gap-[10px] ml-[135px]  mt-[35px] mb-[60px] w-[calc(100%-135px-150px)] ">
         <div className="flex flex-row gap-[8px] items-center ">
-          <button>
-            <Image
-              src={SetaVoltar}
-              alt="seta de voltar"
-              className="w-[32px] h-[27px]"
-            />
-          </button>
+          <Link
+          href={"/"}
+          >
+            <button>
+              <Image
+                src={SetaVoltar}
+                alt="seta de voltar"
+                className="w-[32px] h-[27px]"
+              />
+            </button>
+          </Link>
+          
           <h1 className="text-[36px] font-bold">Cadastro</h1>
         </div>
 
