@@ -7,6 +7,7 @@ import { PetCardProps } from "@/components/pet-card";
 import Inputdata from "@/components/btdata";
 import TopBar from "@/components/topbar";
 import { SetaVoltar, xbotao } from "@/assets";
+
 import { calendar } from "@/assets";
 import { sheep } from "@/assets";
 import { horse } from "@/assets";
@@ -14,15 +15,11 @@ import { pig } from "@/assets";
 import { cat } from "@/assets";
 import { cow } from "@/assets";
 import { cachorro } from "@/assets";
-import Link from "next/link";
-import ConsultaCard from "@/components/ConsultaCard";
-import ConsultaForm from "@/components/nova-consulta";
 
-
+// ... (importações iguais)
 
 export default function disporcards() {
   const [ativo, setAtivo] = useState("agendamento");
-  const [showPopup, setShowPopup] = useState(false);
 
   const cardsMock: PetCardProps[] = [
     {
@@ -32,9 +29,7 @@ export default function disporcards() {
       nomedr: "Dra. Ana",
       data: "10/05",
       horario: "14:00",
-      imagem: horse,
-      idDaConsulta:1,
-      idadePet:5,
+      imagem: sheep,
     },
     {
       type: "Checkup",
@@ -44,8 +39,6 @@ export default function disporcards() {
       data: "11/05",
       horario: "10:30",
       imagem: cachorro,
-      idDaConsulta:2,
-      idadePet:6,
     },
     {
       type: "Vacinacao",
@@ -55,8 +48,6 @@ export default function disporcards() {
       data: "12/05",
       horario: "16:00",
       imagem: pig,
-      idDaConsulta:3,
-      idadePet:7,
     },
     {
       type: "Primeira consulta",
@@ -66,8 +57,6 @@ export default function disporcards() {
       data: "13/05",
       horario: "14:00",
       imagem: sheep,
-      idDaConsulta:4,
-      idadePet:8,
     },
     {
       type: "Checkup",
@@ -76,9 +65,7 @@ export default function disporcards() {
       nomedr: "Dr. Pedro",
       data: "14/05",
       horario: "10:30",
-      imagem: cat,
-      idDaConsulta:5,
-      idadePet:9,
+      imagem: cachorro,
     },
     {
       type: "Vacinacao",
@@ -87,9 +74,7 @@ export default function disporcards() {
       nomedr: "Dra. Julia",
       data: "15/05",
       horario: "16:00",
-      imagem: cow,
-      idDaConsulta:6,
-      idadePet:10,
+      imagem: pig,
     },
     {
       type: "Historico",
@@ -99,8 +84,6 @@ export default function disporcards() {
       data: "10/05",
       horario: "16:00",
       imagem: pig,
-      idDaConsulta:7,
-      idadePet:11,
     },
     {
       type: "Historico",
@@ -110,8 +93,6 @@ export default function disporcards() {
       data: "11/05",
       horario: "16:00",
       imagem: pig,
-      idDaConsulta:8,
-      idadePet:12,
     },
     {
       type: "Historico",
@@ -121,8 +102,6 @@ export default function disporcards() {
       data: "12/05",
       horario: "16:00",
       imagem: pig,
-      idDaConsulta:9,
-      idadePet:13,
     },
     {
       type: "Vacinacao",
@@ -132,8 +111,6 @@ export default function disporcards() {
       data: "13/05",
       horario: "16:00",
       imagem: pig,
-      idDaConsulta:10,
-      idadePet:14,
     },
   ];
 
@@ -217,8 +194,6 @@ export default function disporcards() {
   return (
     <div className="flex flex-1 flex-col justify-around items-center bg-white">
       <div className="w-full">
-    <div className="flex flex-1 flex-col justify-around items-center bg-white">
-      <div className="w-full">
         <TopBar />
       </div>
 
@@ -296,21 +271,10 @@ export default function disporcards() {
         ))}
       </div>
 
-      <button
-        onClick={() => setShowPopup(true)}
-        className="flex justify-center items-center font-sf font-bold w-[205px] h-[42px] self-center rounded-full mt-[25px] ml-auto mr-[50px] shadow-md bg-btnovaconsulta text-white"
-      >
-        <Image src={xbotao} alt="Ícone" className="" />
+      <button className="flex justify-center items-center font-sf font-bold w-[205px] h-[42px] self-center rounded-full mt-[25px] ml-auto mr-[50px] shadow-md bg-btnovaconsulta text-white ">
+        <Image src={xbotao} alt="" className="" />
         <div className="ml-[12px]">Nova Consulta</div>
       </button>
-
-      {/* Pop-up (aparece apenas quando showPopup = true) */}
-      {showPopup && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <ConsultaForm onClose={() => setShowPopup(false)}/>
-        </div>
-        
-      )}
     </div>
   );
 }

@@ -8,6 +8,10 @@ import { calendar } from "@/assets";
 import { alarm } from "@/assets";
 import { Botaoclose } from "@/assets";
 
+interface ConsultaFormProps {
+  onClose: () => void; // tipa a prop
+}
+
 const formattimeInput = (tempoDigitado: string) => {
   let apenasNumeros = "";
   for (let char of tempoDigitado) {
@@ -56,7 +60,7 @@ const formatDateInput = (valorDigitado: string) => {
   }
 };
 
-const ConsultaForm = () => {
+const ConsultaForm = ({ onClose }: ConsultaFormProps) => {
   const [date, setDate] = useState("");
   {
     /* date é onde eu guardo o que vai ser digitado, setDate permite setar date e useState inicia a caixa como vazia */
@@ -75,7 +79,10 @@ const ConsultaForm = () => {
     <div className="relative w-[800px] mx-auto p-[45px] bg-white rounded-[20px] border border-gray-200 shadow-sm">
       {/* parte de cima*/}
 
-      <div className="absolute top-6 right-6 p-4 flex items-center justify-center">
+      <div 
+        className="absolute top-6 right-6 p-4 flex items-center justify-center cursor-pointer"
+        onClick={onClose}   // Isso fecha o pop-up quando clicado
+      >
         <Image
           src={Botaoclose.src}
           alt="Ícone"
