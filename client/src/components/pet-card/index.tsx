@@ -11,7 +11,7 @@ export interface PetCardProps {
   data: string;
   horario: string;
   imagem: StaticImageData;
-  idDaConsulta: number;
+  id: number;
   onClick?: () => void;
   idadePet: number;
 }
@@ -40,7 +40,7 @@ export default function PetCard(props: PetCardProps) {
 
   return (
     <Link
-      href={`/detalhes-consulta/${props.idDaConsulta}`}
+      href={`/detalhes-consulta/${props.id}`}
       className={`w-[470px] h-[120px] rounded-2xl flex items-center ${
         bgClasses[props.type]
       }`}

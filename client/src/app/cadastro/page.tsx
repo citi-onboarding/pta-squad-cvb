@@ -14,7 +14,7 @@ import {
   cat,
 } from "@/assets";
 
-// Funções de formatação com tipos explícitos
+// Funções de formatação
 const formattimeInput = (tempoDigitado: string): string => {
   let apenasNumeros = "";
   for (let char of tempoDigitado) {
@@ -67,7 +67,7 @@ export default function TelaCadastro() {
   const [descricao, setDescricao] = useState<string>("");
   const [mensagem, setMensagem] = useState<string>("");
 
-  // Handlers tipados
+  // Handlers
   const handleDateChange = (input: React.ChangeEvent<HTMLInputElement>) => {
     setDate(formatDateInput(input.target.value));
   };
@@ -75,20 +75,52 @@ export default function TelaCadastro() {
     setTime(formattimeInput(input.target.value));
   };
 
+  // Validação dos campos obrigatórios
+  const camposObrigatoriosPreenchidos =
+    nomepet.trim() &&
+    nomedono.trim() &&
+    tipopet.trim() &&
+    idade.trim() &&
+    tipodaconsulta.trim() &&
+    nomedr.trim() &&
+    date.trim() &&
+    time.trim();
+
+  // Função para extrair somente dd/mm da data digitada
+  function getDiaMes(data: string): string {
+    // Aceita "dd/mm", "dd/mm/aa", "ddmmaaaa"
+    const partes = data.split("/");
+    if (partes.length >= 2) {
+      return `${partes[0]}/${partes[1]}`;
+    }
+    // Se não tiver /, tenta pegar manualmente (caso o usuário digitou sem barra)
+    if (data.length >= 4) {
+      return `${data.slice(0, 2)}/${data.slice(2, 4)}`;
+    }
+    return data;
+  }
+
   // Envia o cadastro para o backend
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!camposObrigatoriosPreenchidos) {
+      setMensagem("Preencha todos os campos obrigatórios!");
+      return;
+    }
+
     const body = {
       nomepet,
       nomedono,
       nomedr,
-      idade: idade, // sempre número!
+      idade, // string
       tipodaconsulta,
-      data: date,
+      data: getDiaMes(date), // Apenas dd/mm
       horario: time,
       descricao,
       tipopet,
     };
+
     try {
       const res = await fetch("http://localhost:3001/Consulta", {
         method: "POST",
@@ -129,7 +161,8 @@ export default function TelaCadastro() {
             <Image
               src={SetaVoltar}
               alt="seta de voltar"
-              className="w-[32px] h-[27px]"
+              width={32}
+              height={27}
             />
           </button>
           <h1 className="text-[36px] font-bold">Cadastro</h1>
@@ -199,14 +232,13 @@ export default function TelaCadastro() {
           <div className="flex flex-col w-full">
             <h2 className="font-bold">Idade do Paciente</h2>
             <input
-              type="number"
+              type="text"
               placeholder="Digite aqui..."
               className="w-full border-2 border-gray-500 rounded-[8px] p-4 h-[40px] flex items-center"
               value={idade}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setIdade(e.target.value)
               }
-              min={0}
             />
           </div>
           <div className="flex flex-col w-full">

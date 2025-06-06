@@ -1,6 +1,18 @@
-import React from 'react';
+import React from "react";
 
-export default function ConsultaCard() {
+type ConsultaCardProps = {
+  nomepet: string;
+  idade: string;
+  nomedono: string;
+  nomedr: string;
+  descricao?: string;
+  tipodaconsulta: string;
+  data: string;
+  horario: string;
+  tipopet: string;
+};
+
+export default function ConsultaCard(props: ConsultaCardProps) {
   return (
     <div className="w-full max-w-[600px] mx-auto bg-white p-12 rounded-xl shadow-lg shadow-xl">
       <div className="flex mb-6">
@@ -10,19 +22,20 @@ export default function ConsultaCard() {
         <h1 className="text-5xl font-bold ">Detalhes da Consulta</h1>
       </div>
 
-
       <h2 className="text-2xl font-bold">Paciente</h2>
       <div className="flex items-center gap-6 mb-12 mt-8 ">
+        {/* Mostra a imagem baseada no tipo do pet (opcional, pode adaptar!) */}
         <img
-          src="/img/gato.png"
+          src={`/img/${props.tipopet}.png`}
           className="w-1/2 h-3/5 object-contain"
+          alt={`imagem de ${props.tipopet}`}
         />
         <div>
-          <h3 className="text-2xl font-bold">Luna</h3>
-          <p className="text-2xl font-light">5 anos</p>
+          <h3 className="text-2xl font-bold">{props.nomepet}</h3>
+          <p className="text-2xl font-light">{props.idade} anos</p>
           <div className="mt-4">
-            <p className="text-base text-gray-700">Lucas Gomes</p>
-            <p className="text-base text-gray-700">Dr. José Carlos</p>
+            <p className="text-base text-gray-700">{props.nomedono}</p>
+            <p className="text-base text-gray-700">Dr. {props.nomedr}</p>
           </div>
         </div>
       </div>
@@ -30,23 +43,28 @@ export default function ConsultaCard() {
       <div className="mb-4">
         <h3 className="font-bold mb-1">Descrição do problema:</h3>
         <p className="text-base text-gray-700">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text
-          ever since the 1500s, when an unknown printer took a galley of type
-          and scrambled it to make a type specimen book. It has survived not
-          only five centuries
+          {props.descricao || "Nenhuma descrição informada."}
         </p>
       </div>
 
       <div className="mb-8">
         <span className="font-bold">Tipo de consulta: </span>
         <span className="inline-block bg-sky-200 text-black text-base font-light px-4 py-1 rounded-sm ml-2">
-          Vacinação
+          {props.tipodaconsulta}
         </span>
       </div>
 
+      <div className="mb-8">
+        <span className="font-bold">Data: </span>
+        <span>{props.data}</span>
+        <span className="ml-6 font-bold">Horário: </span>
+        <span>{props.horario}</span>
+      </div>
+
       <div className="border border-stone-300 rounded-3xl p-6 text-center">
-        <p className="mb-3 text-base font-bold">Deseja realizar outra consulta?</p>
+        <p className="mb-3 text-base font-bold">
+          Deseja realizar outra consulta?
+        </p>
         <button className="w-full text-base bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full font-medium shadow-md transition">
           &#9745; Agendamento
         </button>

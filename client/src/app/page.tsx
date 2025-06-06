@@ -120,6 +120,9 @@ export default function Disporcards() {
       : card.type !== "Historico" && noIntervalo;
   });
 
+  console.log("Array de cards:", cardsfiltrados); // ou cards
+  console.log("ID:", cardsfiltrados[1].id);
+
   return (
     <div className="flex flex-1 flex-col justify-around items-center bg-white">
       <div className="w-full">
@@ -191,8 +194,20 @@ export default function Disporcards() {
         </div>
       </div>
       <div className="grid grid-cols-3 gap-[18px] mt-[30px] h-[258px] overflow-y-auto">
-        {cardsfiltrados.map((conteudodoindicedoarray, indicedoarray) => (
-          <PetCard key={indicedoarray} {...conteudodoindicedoarray} />
+        {cardsfiltrados.map((card, idx) => (
+          <PetCard
+            key={card.id ?? idx}
+            id={card.id} // <--- ESSA LINHA É FUNDAMENTAL!!!
+            type={card.type}
+            nomepet={card.nomepet}
+            nomedono={card.nomedono}
+            nomedr={card.nomedr}
+            data={card.data}
+            horario={card.horario}
+            imagem={card.imagem}
+            idadePet={card.id}
+            // ...adicione mais props se precisar
+          />
         ))}
       </div>
 
