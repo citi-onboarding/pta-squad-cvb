@@ -29,6 +29,8 @@ module.exports = {
         checkup: "#9CFF95",
         historico: "#F0F0F0",
         btfiltro: "#F0F0F0",
+        btbuscar: "#7D1AD7",
+        btnovaconsulta: "#50E678",
 
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

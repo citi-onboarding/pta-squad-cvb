@@ -22,3 +22,15 @@ model Test {
   name String
   age  Int
 }
+
+model Consulta {
+  id Int @id @default(autoincrement())
+  nomepet String
+  nomedono String
+  nomedr String
+  idade String
+  tipodaconsulta String
+  data String
+  horario String
+  descricao String?
+}

@@ -8,7 +8,7 @@ type BtFiltroProps = {
 
 export default function BtFiltro({ ativo, setAtivo }: BtFiltroProps) {
   return (
-    <div className="flex flex-1 flex-col h-full justify-around items-center bg-black">
+    <div className="flex flex-1 flex-col h-full justify-around items-center">
       <div className="w-[243px] h-[58px] bg-btfiltro rounded-xl flex items-center p-1">
         <button
           onClick={() => setAtivo("agendamento")}

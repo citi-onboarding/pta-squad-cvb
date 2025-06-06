@@ -1,26 +1,39 @@
+import Buttongroup from "./Button groups.svg";
 import LogoCITi from "./Logo.png";
-export { LogoCITi };
-
+import Logopet from "./Logo CITi Pet.svg";
 import Alarm from "./alarm.svg";
-export { Alarm };
-
 import sheep from "./sheep.svg";
-export { sheep };
-
-import cat2 from "./cat2.svg";
-export { cat2 };
-
 import pig from "./pig.svg";
-export { pig };
-
 import cat from "./cat.svg";
-export { cat };
-
 import cow from "./cow.svg";
-export { cow };
-
 import horse from "./horse.svg";
-export { horse };
+import LogotipoSVG from "./LogotipoSVG.svg";
+import pataSVG from "./pataSVG.svg";
+import alarm from "./clock.svg";
+import calendar from "./calendar_month.svg";
+import Botaoclose from "./Botão-close.svg";
+import LogoCITiPet from "./Logo CITi Pet.svg";
+import cachorro from "./cachorro.png";
+import SetaVoltar from "./SetaVoltar.svg";
+import arrow_back from "./arrow_back.svg";
+import xbotao from "./xbotao.svg";
 
-import calendario from "./calendario.svg";
-export { calendario };
+export { xbotao };
+export { arrow_back };
+export { cachorro };
+export { SetaVoltar };
+export { LogoCITiPet };
+export { LogoCITi };
+export { Logopet };
+export { Buttongroup };
+export { Alarm };
+export { cat };
+export { cow };
+export { horse };
+export { sheep };
+export { pig };
+export { Botaoclose };
+export { LogotipoSVG };
+export { calendar };
+export { alarm };
+export { pataSVG };
