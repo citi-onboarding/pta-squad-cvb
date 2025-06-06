@@ -217,6 +217,8 @@ export default function disporcards() {
   return (
     <div className="flex flex-1 flex-col justify-around items-center bg-white">
       <div className="w-full">
+    <div className="flex flex-1 flex-col justify-around items-center bg-white">
+      <div className="w-full">
         <TopBar />
       </div>
 

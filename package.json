@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@svgr/webpack": "^8.1.0",
-    "cssnano": "^7.0.7"
+    "cssnano": "^7.0.7",
+    "react-native-safe-area-context": "^5.4.1"
   }
 }
