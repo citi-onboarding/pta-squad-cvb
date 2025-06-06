@@ -15,6 +15,7 @@ class controllerconsulta implements Crud {
       data,
       horario,
       descricao,
+      tipopet, // <-- Adiciona aqui
     } = request.body;
 
     const isAnyUndefined = this.citi.areValuesUndefined(
@@ -24,7 +25,8 @@ class controllerconsulta implements Crud {
       idade,
       tipodaconsulta,
       data,
-      horario
+      horario,
+      tipopet // <-- Adiciona na verificação
     );
 
     if (isAnyUndefined) {
@@ -40,6 +42,7 @@ class controllerconsulta implements Crud {
       data,
       horario,
       descricao,
+      tipopet, // <-- Adiciona aqui
     };
 
     const { httpStatus, message } = await this.citi.insertIntoDatabase(
@@ -103,6 +106,7 @@ class controllerconsulta implements Crud {
       data,
       horario,
       descricao,
+      tipopet, // <-- Adiciona aqui
     } = request.body;
 
     const updatedValues = {
@@ -114,6 +118,7 @@ class controllerconsulta implements Crud {
       data,
       horario,
       descricao,
+      tipopet, // <-- Adiciona aqui
     };
 
     const { httpStatus, messageFromUpdate } = await this.citi.updateValue(

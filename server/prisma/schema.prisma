@@ -33,4 +33,5 @@ model Consulta {
   data String
   horario String
   descricao String?
+  tipopet String
 }

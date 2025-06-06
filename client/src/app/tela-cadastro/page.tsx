@@ -2,10 +2,8 @@
 import Image from "next/image";
 import TopBar from "@/components/topbar/index";
 import { useState } from "react";
-import { LogoCITi } from "@/assets";
-import { Buttongroup, Logopet } from "@/assets";
-import { SetaVoltar } from "@/assets";
 import {
+  SetaVoltar,
   cow,
   cachorro,
   horse,
@@ -16,18 +14,17 @@ import {
   cat,
 } from "@/assets";
 
-const formattimeInput = (tempoDigitado: string) => {
+// Funções de formatação com tipos explícitos
+const formattimeInput = (tempoDigitado: string): string => {
   let apenasNumeros = "";
   for (let char of tempoDigitado) {
     if ("0123456789".includes(char)) {
       apenasNumeros += char;
     }
   }
-
   if (apenasNumeros.length > 4) {
     apenasNumeros = apenasNumeros.slice(0, 4);
   }
-
   if (apenasNumeros.length > 2) {
     return `${apenasNumeros.slice(0, 2)}:${apenasNumeros.slice(2)}`;
   } else {
@@ -35,26 +32,19 @@ const formattimeInput = (tempoDigitado: string) => {
   }
 };
 
-const formatDateInput = (valorDigitado: string) => {
-  // 1. Remove TUDO que não for número (deixa só dígitos)
+const formatDateInput = (valorDigitado: string): string => {
   let apenasNumeros = "";
   for (let char of valorDigitado) {
     if ("0123456789".includes(char)) {
       apenasNumeros += char;
     }
   }
-
-  // 2. Limita a 8 caracteres (DDMMYYYY)
   if (apenasNumeros.length > 8) {
     apenasNumeros = apenasNumeros.slice(0, 8);
   }
-
-  // 3. Formata com barras
   let parteDia = apenasNumeros.slice(0, 2);
   let parteMes = apenasNumeros.slice(2, 4);
   let parteAno = apenasNumeros.slice(4, 8);
-
-  // Monta o resultado conforme o tamanho
   if (apenasNumeros.length > 4) {
     return `${parteDia}/${parteMes}/${parteAno}`;
   } else if (apenasNumeros.length > 2) {
@@ -65,26 +55,77 @@ const formatDateInput = (valorDigitado: string) => {
 };
 
 export default function TelaCadastro() {
-  const [selecionado, setSelecionado] = useState("");
-  const [date, setDate] = useState("");
+  // Estados do formulário
+  const [nomepet, setNomepet] = useState<string>("");
+  const [nomedono, setNomedono] = useState<string>("");
+  const [tipopet, setTipopet] = useState<string>("");
+  const [idade, setIdade] = useState<string>("");
+  const [tipodaconsulta, setTipodaconsulta] = useState<string>("");
+  const [nomedr, setNomedr] = useState<string>("");
+  const [date, setDate] = useState<string>("");
+  const [time, setTime] = useState<string>("");
+  const [descricao, setDescricao] = useState<string>("");
+  const [mensagem, setMensagem] = useState<string>("");
+
+  // Handlers tipados
   const handleDateChange = (input: React.ChangeEvent<HTMLInputElement>) => {
     setDate(formatDateInput(input.target.value));
   };
-
-  const [time, setTime] = useState(""); // Novo estado para o horário
-
   const handleTimeChange = (input: React.ChangeEvent<HTMLInputElement>) => {
     setTime(formattimeInput(input.target.value));
   };
+
+  // Envia o cadastro para o backend
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const body = {
+      nomepet,
+      nomedono,
+      nomedr,
+      idade: idade, // sempre número!
+      tipodaconsulta,
+      data: date,
+      horario: time,
+      descricao,
+      tipopet,
+    };
+    try {
+      const res = await fetch("http://localhost:3001/Consulta", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      if (!res.ok) {
+        const errorJson = await res.json();
+        setMensagem(errorJson.message || "Erro ao cadastrar.");
+      } else {
+        setMensagem("Cadastro realizado com sucesso!");
+        setNomepet("");
+        setNomedono("");
+        setTipopet("");
+        setIdade("");
+        setTipodaconsulta("");
+        setNomedr("");
+        setDate("");
+        setTime("");
+        setDescricao("");
+      }
+    } catch {
+      setMensagem("Erro de conexão com servidor.");
+    }
+  };
+
   return (
-    <div className="flex flex-col items-start  min-h-screen bg-white">
+    <div className="flex flex-col items-start min-h-screen bg-white">
       <div className="w-full">
         <TopBar />
       </div>
-
-      <div className=" flex flex-col gap-[10px] ml-[135px]  mt-[35px] mb-[60px] w-[calc(100%-135px-150px)] ">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col gap-[10px] ml-[135px] mt-[35px] mb-[60px] w-[calc(100%-135px-150px)]"
+      >
         <div className="flex flex-row gap-[8px] items-center ">
-          <button>
+          <button type="button">
             <Image
               src={SetaVoltar}
               alt="seta de voltar"
@@ -94,15 +135,17 @@ export default function TelaCadastro() {
           <h1 className="text-[36px] font-bold">Cadastro</h1>
         </div>
 
-        <div className="flex flex-row gap-4 mt-[10px] ">
-          {" "}
-          {/* nome do paciente e tutor aqui */}
+        <div className="flex flex-row gap-4 mt-[10px]">
           <div className="flex flex-col w-full">
             <h2 className="font-bold">Nome de Paciente</h2>
             <input
               type="text"
               placeholder="Digite aqui..."
               className="w-full border-2 border-gray-500 rounded-[8px] p-4 h-[40px] flex items-center"
+              value={nomepet}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setNomepet(e.target.value)
+              }
             />
           </div>
           <div className="flex flex-col w-full">
@@ -111,28 +154,31 @@ export default function TelaCadastro() {
               type="text"
               placeholder="Digite aqui..."
               className="w-full border-2 border-gray-500 rounded-[8px] p-4 h-[40px] flex items-center"
+              value={nomedono}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setNomedono(e.target.value)
+              }
             />
           </div>
         </div>
 
+        {/* Tipo do pet */}
         <div className="flex-col mt-[8px]">
-          {" "}
-          {/* imagens do animais com hover  */}
           <h2 className="font-bold">Qual é a espécie do paciente?</h2>
           <div className="mt-[15px] flex flex-row gap-[35px]">
             {[
               { id: "ovelha", src: sheep, alt: "imagem de ovelha" },
               { id: "gato", src: cat, alt: "imagem de gato" },
               { id: "porco", src: pig, alt: "imagem de porco" },
-              { id: "boi", src: cow, alt: "imagem de boi" },
+              { id: "vaca", src: cow, alt: "imagem de vaca" },
               { id: "cavalo", src: horse, alt: "imagem de cavalo" },
               { id: "cachorro", src: cachorro, alt: "imagem de cachorro" },
             ].map((img) => (
               <div
                 key={img.id}
-                onClick={() => setSelecionado(img.id)}
+                onClick={() => setTipopet(img.id)}
                 className={`h-[120px] w-[120px] rounded-lg cursor-pointer flex items-center justify-center ${
-                  selecionado === img.id ? "bg-gray-300" : ""
+                  tipopet === img.id ? "bg-gray-300" : ""
                 }`}
               >
                 <Image
@@ -149,32 +195,37 @@ export default function TelaCadastro() {
           </div>
         </div>
 
-        <div className="flex flex-row gap-4 mt-[10px] ">
-          {" "}
-          {/*barras de idade e tipo de consulta */}
+        <div className="flex flex-row gap-4 mt-[10px]">
           <div className="flex flex-col w-full">
             <h2 className="font-bold">Idade do Paciente</h2>
             <input
-              type="text"
+              type="number"
               placeholder="Digite aqui..."
               className="w-full border-2 border-gray-500 rounded-[8px] p-4 h-[40px] flex items-center"
+              value={idade}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setIdade(e.target.value)
+              }
+              min={0}
             />
           </div>
           <div className="flex flex-col w-full">
             <h2 className="font-bold">Tipo de Consulta</h2>
             <select
-              className="w-full   border-2 border-gray-500 rounded-[8px]  h-[40px] flex items-center
-                        focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-400 pl-3 "
+              className="w-full border-2 border-gray-500 rounded-[8px] h-[40px] flex items-center focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-400 pl-3"
+              value={tipodaconsulta}
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                setTipodaconsulta(e.target.value)
+              }
             >
-              <option>Selecione aqui...</option>
+              <option value="">Selecione aqui...</option>
+              <option value="Vacinacao">Vacinação</option>
+              <option value="Historico">Histórico</option>
             </select>
           </div>
         </div>
 
         <div className="flex gap-4 mb-6 mt-[8px]">
-          {" "}
-          {/* terceira linha com médio, horário e data */}
-          {/* Médico Responsável */}
           <div className="w-[45%]">
             <label className="block text-gray-1000 mb-2 font-bold">
               Médico Responsável
@@ -182,11 +233,13 @@ export default function TelaCadastro() {
             <input
               type="text"
               placeholder="Digite aqui..."
-              className="w-full   border-2 border-gray-500 rounded-[8px]  h-[40px] flex items-center
-                            focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-400 pl-3"
+              className="w-full border-2 border-gray-500 rounded-[8px] h-[40px] flex items-center focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-400 pl-3"
+              value={nomedr}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setNomedr(e.target.value)
+              }
             />
           </div>
-          {/* Data + horário */}
           <div className=" flex  w-[55%] gap-4">
             <div className="flex-1">
               <label className="block text-gray-1000 mb-2 font-bold">
@@ -201,17 +254,13 @@ export default function TelaCadastro() {
                 <input
                   type="text"
                   value={date}
-                  onChange={
-                    handleDateChange
-                  } /* quando tiver uma mudança = digitação ele  */
+                  onChange={handleDateChange}
                   placeholder="dd/mm/aa"
                   maxLength={10}
-                  className="w-full   border-2 border-gray-500 rounded-[8px]  h-[40px] flex items-center
-                            focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-400 pl-3"
+                  className="w-full border-2 border-gray-500 rounded-[8px] h-[40px] flex items-center focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-400 pl-3"
                 />
               </div>
             </div>
-
             <div className="flex-1">
               <label className="block text-gray-1000 mb-2 font-bold">
                 Horário do atendimento
@@ -227,7 +276,7 @@ export default function TelaCadastro() {
                   value={time}
                   onChange={handleTimeChange}
                   placeholder="00:00"
-                  maxLength={5} // Permite "00:00" (5 caracteres)
+                  maxLength={5}
                   className="w-full border-2 border-gray-500 rounded-[8px] h-[40px] flex items-center focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-400 pl-3"
                 />
               </div>
@@ -235,25 +284,38 @@ export default function TelaCadastro() {
           </div>
         </div>
 
-        {/* Descrição do problema */}
         <div>
           <h2 className="font-bold">Descrição do Problema</h2>
           <textarea
             placeholder="Digite aqui..."
             className="w-full border-2 border-gray-500 rounded-[8px] p-4 h-[95px] resize-none"
+            value={descricao}
+            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+              setDescricao(e.target.value)
+            }
           />
         </div>
 
-        {/* botão de finalização */}
+        {mensagem && (
+          <div
+            className={`mt-3 ${
+              mensagem.includes("sucesso") ? "text-green-700" : "text-red-700"
+            }`}
+          >
+            {mensagem}
+          </div>
+        )}
+
         <div className="flex justify-end mt-[30px]">
           <button
+            type="submit"
             className=" py-3 px-4 text-white font-medium rounded-[24px] transition duration-200 w-[205px] h-[48px]"
             style={{ backgroundColor: "#50E678" }}
           >
             Finalizar cadastro
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 }

@@ -1,128 +1,72 @@
 "use client";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
-import { cat1 } from "@/assets";
-import { cat2 } from "@/assets";
-import { cat3 } from "@/assets";
-import { cat4 } from "@/assets";
-import { cat5 } from "@/assets";
-import { cat6 } from "@/assets";
-
-import { LogoCITi } from "../assets";
-import PetCard from "@/components/pet-card";
-import { useState } from "react";
+import { getConsultas } from "@/services/users";
+import PetCard, { PetCardProps } from "@/components/pet-card";
 import BtFiltro from "@/components/btfiltro";
-import { PetCardProps } from "@/components/pet-card";
 import Inputdata from "@/components/btdata";
 import TopBar from "@/components/topbar";
-import { SetaVoltar, xbotao } from "@/assets";
+import {
+  SetaVoltar,
+  xbotao,
+  calendar,
+  sheep,
+  horse,
+  pig,
+  cat,
+  cow,
+  cachorro,
+} from "@/assets";
 
-import { calendar } from "@/assets";
-import { sheep } from "@/assets";
-import { horse } from "@/assets";
-import { pig } from "@/assets";
-import { cat } from "@/assets";
-import { cow } from "@/assets";
-import { cachorro } from "@/assets";
+// Função utilitária para escolher imagem conforme o TIPO do pet (usando tipopet agora!)
+function getImagem(tipopet: string) {
+  if (!tipopet) return cachorro; // valor padrão
+  switch (tipopet.toLowerCase()) {
+    case "cachorro":
+      return cachorro;
+    case "gato":
+      return cat;
+    case "vaca":
+      return cow;
+    case "cavalo":
+      return horse;
+    case "porco":
+      return pig;
+    case "ovelha":
+      return sheep;
+    // Acrescente outros tipos se necessário!
+    default:
+      return cachorro;
+  }
+}
 
-export default function disporcards() {
+export default function Disporcards() {
   const [ativo, setAtivo] = useState("agendamento");
-
-  const cardsMock: PetCardProps[] = [
-    {
-      type: "Primeira consulta",
-      nomepet: "Rex",
-      nomedono: "João",
-      nomedr: "Dra. Ana",
-      data: "10/05",
-      horario: "14:00",
-      imagem: sheep,
-    },
-    {
-      type: "Checkup",
-      nomepet: "Mia",
-      nomedono: "Carla",
-      nomedr: "Dr. Pedro",
-      data: "11/05",
-      horario: "10:30",
-      imagem: cachorro,
-    },
-    {
-      type: "Vacinacao",
-      nomepet: "Thor",
-      nomedono: "Lucas",
-      nomedr: "Dra. Julia",
-      data: "12/05",
-      horario: "16:00",
-      imagem: pig,
-    },
-    {
-      type: "Primeira consulta",
-      nomepet: "Rex",
-      nomedono: "João",
-      nomedr: "Dra. Ana",
-      data: "13/05",
-      horario: "14:00",
-      imagem: sheep,
-    },
-    {
-      type: "Checkup",
-      nomepet: "Mia",
-      nomedono: "Carla",
-      nomedr: "Dr. Pedro",
-      data: "14/05",
-      horario: "10:30",
-      imagem: cachorro,
-    },
-    {
-      type: "Vacinacao",
-      nomepet: "Thor",
-      nomedono: "Lucas",
-      nomedr: "Dra. Julia",
-      data: "15/05",
-      horario: "16:00",
-      imagem: pig,
-    },
-    {
-      type: "Historico",
-      nomepet: "Thor",
-      nomedono: "Lucas",
-      nomedr: "Dra. Julia",
-      data: "10/05",
-      horario: "16:00",
-      imagem: pig,
-    },
-    {
-      type: "Historico",
-      nomepet: "Thor",
-      nomedono: "Lucas",
-      nomedr: "Dra. Julia",
-      data: "11/05",
-      horario: "16:00",
-      imagem: pig,
-    },
-    {
-      type: "Historico",
-      nomepet: "Thor",
-      nomedono: "Lucas",
-      nomedr: "Dra. Julia",
-      data: "12/05",
-      horario: "16:00",
-      imagem: pig,
-    },
-    {
-      type: "Vacinacao",
-      nomepet: "Thor",
-      nomedono: "Lucas",
-      nomedr: "Dra. Julia",
-      data: "13/05",
-      horario: "16:00",
-      imagem: pig,
-    },
-  ];
-
+  const [cards, setCards] = useState<PetCardProps[]>([]);
   const [dataInicio, setDataInicio] = useState("");
   const [dataFim, setDataFim] = useState("");
+
+  // Buscar consultas do banco ao carregar a tela
+  useEffect(() => {
+    async function fetchConsultas() {
+      try {
+        const dados = await getConsultas();
+
+        // Aqui usa o tipopet ao invés do nomepet para a imagem!
+        const adaptados: PetCardProps[] = dados.map((item: any) => ({
+          ...item,
+          type: item.tipodaconsulta,
+          imagem: getImagem(item.tipopet), // <-- ALTERADO AQUI!
+        }));
+
+        setCards(adaptados);
+      } catch (error) {
+        console.error("Erro ao buscar consultas:", error);
+      }
+    }
+    fetchConsultas();
+  }, []);
 
   function formatardata(novoValor: string, valorAnterior: string) {
     const estaApagando = novoValor.length < valorAnterior.length;
@@ -133,58 +77,36 @@ export default function disporcards() {
     let saida = "";
 
     if (n <= 2) {
-      //ta digitando o dia
-      // 1 → "1", 11 → "11/"
-      saida = digitos + (!estaApagando && n === 2 ? "/" : ""); //se nao esta apagando e ja tem 2 digitos de dia ja, coloca a /
+      saida = digitos + (!estaApagando && n === 2 ? "/" : "");
     } else if (n <= 4) {
-      //se a string tem mais de 2 digitos
-      // 110  → "11/0", 1105 → "11/05/"
-      saida = `${digitos.slice(0, 2)}/${digitos.slice(2)}`; //pega a string de dia vetor[0,1], coloca a barra e adiciona tudo q vem dps da barra da string dd/mm
-      if (!estaApagando && n === 4) saida += "/"; //se nao esta apagando e a string "ddmmaa" tem exatamente 4 digitos, adiciona a / na saida dd/mm/
+      saida = `${digitos.slice(0, 2)}/${digitos.slice(2)}`;
+      if (!estaApagando && n === 4) saida += "/";
     } else {
-      //aqui so entra se estiver escrevendo o ano
-      // 11052  → "11/05/2", 110525 → "11/05/25"
       saida = `${digitos.slice(0, 2)}/${digitos.slice(2, 4)}/${digitos.slice(
         4
       )}`;
-    } //aqui eu basicamente vou ter um vetor de digitos de tamanho 6 que sera ddmmaa sem as barras e uma saida que sera construida colocando essas barras alem de uma variavel n que diz a qtd de digitos digitados
-
+    }
     return saida;
   }
 
   function parseDataBR(dataStr: string): Date | null {
     const partes = dataStr.split("/");
-    if (partes.length !== 3) return null; //se a data nao tem os 3 parametros dd/mm/aa da nulo
-
+    if (partes.length !== 3) return null;
     const [diaStr, mesStr, anoStr] = partes;
     const dia = parseInt(diaStr);
     const mes = parseInt(mesStr) - 1;
-    const ano = parseInt(anoStr.length === 2 ? "20" + anoStr : anoStr); //nao enterndi essa linha
+    const ano = parseInt(anoStr.length === 2 ? "20" + anoStr : anoStr);
 
-    if (
-      isNaN(dia) ||
-      isNaN(mes) ||
-      isNaN(ano) ||
-      ano === 1 ||
-      ano === 2 ||
-      ano === 3 ||
-      ano === 4 ||
-      ano === 5 ||
-      ano === 6 ||
-      ano === 7 ||
-      ano === 8 ||
-      ano === 9 ||
-      ano === 0
-    )
-      //adicionei a limitacao do ano nao poder ter so 1 digito
-      return null; //se alguma parte for nulo
-
+    if (isNaN(dia) || isNaN(mes) || isNaN(ano) || ano < 1000) return null;
     return new Date(ano, mes, dia);
   }
 
-  const cardsfiltrados = cardsMock.filter((card) => {
-    const [dia, mes] = card.data.split("/").map(Number);
-    const datacard = new Date(2025, mes - 1, dia);
+  const cardsfiltrados = cards.filter((card) => {
+    // Supondo que o card.data é no formato "dd/mm"
+    const partesData = card.data.split("/");
+    if (partesData.length < 2) return false;
+    const [dia, mes] = partesData.map(Number);
+    const datacard = new Date(2025, mes - 1, dia); // Ajuste o ano conforme sua regra
 
     const datainicial = parseDataBR(dataInicio);
     const datafinal = parseDataBR(dataFim);
@@ -212,20 +134,16 @@ export default function disporcards() {
       </div>
 
       <div className="font-sf text-lg mr-[1270px] mt-[10px] ">
-        Qual e o médico?
+        Qual é o médico?
       </div>
 
       <div className="flex items-center mr-[765px]">
         <input
           type="text"
           placeholder="Pesquise aqui..."
-          value={dataInicio}
-          onChange={(e) =>
-            setDataInicio(formatardata(e.target.value, dataInicio))
-          }
+          // Aqui você pode adicionar lógica para buscar por médico se quiser!
           className="w-[520px] h-[50px] rounded-lg border-[1px] border-gray-400 pl-5 mr-[20px] mt-[10px]"
         />
-
         <button className="font-sf font-bold w-[116px] h-[42px] self-center rounded-full mt-[10px] shadow-md bg-btbuscar text-white">
           Buscar
         </button>
