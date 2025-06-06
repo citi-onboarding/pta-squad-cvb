@@ -17,7 +17,7 @@ export default function PetCard(props: PetCardProps) {
   switch (props.type) {
     case "Primeira consulta":
       return (
-        <div className="w-[495px] h-[135px] bg-primeiraconsulta rounded-2xl flex items-center">
+        <div className="w-[470px] h-[120px] bg-primeiraconsulta rounded-2xl flex items-center">
           <div className="w-[51px] h-[90px] bg-white rounded-sm ml-[24px] flex-col">
             <Image src={Alarm} alt="alarme" className="ml-[17px] mt-[12px]" />
 
@@ -50,7 +50,7 @@ export default function PetCard(props: PetCardProps) {
 
     case "Vacinacao":
       return (
-        <div className="w-[495px] h-[135px] bg-vacinacao rounded-2xl flex items-center">
+        <div className="w-[470px] h-[120px] bg-vacinacao rounded-2xl flex items-center">
           <div className="w-[51px] h-[90px] bg-white rounded-sm ml-[24px] flex-col">
             <Image src={Alarm} alt="alarme" className="ml-[17px] mt-[12px]" />
 
@@ -83,7 +83,7 @@ export default function PetCard(props: PetCardProps) {
 
     case "Checkup":
       return (
-        <div className="w-[495px] h-[135px] bg-checkup rounded-2xl flex items-center">
+        <div className="w-[470px] h-[120px] bg-checkup rounded-2xl flex items-center">
           <div className="w-[51px] h-[90px] bg-white rounded-sm ml-[24px] flex-col">
             <Image src={Alarm} alt="alarme" className="ml-[17px] mt-[12px]" />
 
@@ -116,7 +116,7 @@ export default function PetCard(props: PetCardProps) {
 
     case "Retorno":
       return (
-        <div className="w-[495px] h-[135px] bg-retorno rounded-2xl flex items-center">
+        <div className="w-[470px] h-[120px] bg-retorno rounded-2xl flex items-center">
           <div className="w-[51px] h-[90px] bg-white rounded-sm ml-[24px] flex-col">
             <Image src={Alarm} alt="alarme" className="ml-[17px] mt-[12px]" />
 
@@ -140,7 +140,7 @@ export default function PetCard(props: PetCardProps) {
               className="w-[70px] h-[70px] mb-[5px]"
             />
 
-            <div className="w-[101px] h-[25px] bg-white rounded-sm font-sf text-[12px] flex justify-center items-center">
+            <div className="w-[470px] h-[120px] bg-white rounded-sm font-sf text-[12px] flex justify-center items-center">
               <div className="">{props.type}</div>
             </div>
           </div>
@@ -149,7 +149,7 @@ export default function PetCard(props: PetCardProps) {
 
     case "Historico":
       return (
-        <div className="w-[495px] h-[135px] bg-historico rounded-2xl flex items-center">
+        <div className="w-[470px] h-[120px] bg-historico rounded-2xl flex items-center">
           <div className="w-[51px] h-[90px] bg-white rounded-sm ml-[24px] flex-col">
             <Image src={Alarm} alt="alarme" className="ml-[17px] mt-[12px]" />
 
