@@ -141,6 +141,57 @@ export default class Citi<Entity extends ModelNames> {
     }
   }
 
+  async findByFields(fields: { nomepet: string; nomedono: string }) {
+    try {
+      const value = await prisma[
+        this.entity.toLowerCase() as Uncapitalize<Prisma.ModelName>
+        //@ts-expect-error
+      ].findMany({
+        where: {
+          nomepet: fields.nomepet,
+          nomedono: fields.nomedono,
+        },
+      });
+
+      Terminal.show("VALORES ENCONTRADOS");
+      return {
+        httpStatus: 200,
+        values: value,
+      };
+    } catch (error) {
+      Terminal.show("VALORES NÃO ENCONTRADOS");
+      return {
+        httpStatus: 400,
+        values: [],
+      };
+    }
+  }
+
+  async findByNomeDr(nomedr: string) {
+    try {
+      const value = await prisma[
+        this.entity.toLowerCase() as Uncapitalize<Prisma.ModelName>
+        //@ts-expect-error
+      ].findMany({
+        where: {
+          nomedr: nomedr,
+        },
+      });
+
+      Terminal.show("VALORES ENCONTRADOS POR NOMEDR");
+      return {
+        httpStatus: 200,
+        values: value,
+      };
+    } catch (error) {
+      Terminal.show("ERRO AO BUSCAR POR NOMEDR");
+      return {
+        httpStatus: 400,
+        values: [],
+      };
+    }
+  }
+
   /**
    * Atualiza um registro na entidade do banco de dados com os valores fornecidos.
    *
