@@ -11,7 +11,7 @@ export default function ConsultaCard() {
       </div>
 
 
-      <h2 className="text-2xl font-bold">Paciente</h2>
+      <h2 className="text-2xl font-bold">Paciente</h2> 
       <div className="flex items-center gap-6 mb-12 mt-8 ">
         <img
           src="/img/gato.png"

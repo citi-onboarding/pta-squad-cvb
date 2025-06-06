@@ -32,7 +32,9 @@ export default function disporcards() {
       nomedr: "Dra. Ana",
       data: "10/05",
       horario: "14:00",
-      imagem: sheep,
+      imagem: horse,
+      idDaConsulta:1,
+      idadePet:5,
     },
     {
       type: "Checkup",
@@ -42,6 +44,8 @@ export default function disporcards() {
       data: "11/05",
       horario: "10:30",
       imagem: cachorro,
+      idDaConsulta:2,
+      idadePet:6,
     },
     {
       type: "Vacinacao",
@@ -51,6 +55,8 @@ export default function disporcards() {
       data: "12/05",
       horario: "16:00",
       imagem: pig,
+      idDaConsulta:3,
+      idadePet:7,
     },
     {
       type: "Primeira consulta",
@@ -60,6 +66,8 @@ export default function disporcards() {
       data: "13/05",
       horario: "14:00",
       imagem: sheep,
+      idDaConsulta:4,
+      idadePet:8,
     },
     {
       type: "Checkup",
@@ -68,7 +76,9 @@ export default function disporcards() {
       nomedr: "Dr. Pedro",
       data: "14/05",
       horario: "10:30",
-      imagem: cachorro,
+      imagem: cat,
+      idDaConsulta:5,
+      idadePet:9,
     },
     {
       type: "Vacinacao",
@@ -77,7 +87,9 @@ export default function disporcards() {
       nomedr: "Dra. Julia",
       data: "15/05",
       horario: "16:00",
-      imagem: pig,
+      imagem: cow,
+      idDaConsulta:6,
+      idadePet:10,
     },
     {
       type: "Historico",
@@ -87,6 +99,8 @@ export default function disporcards() {
       data: "10/05",
       horario: "16:00",
       imagem: pig,
+      idDaConsulta:7,
+      idadePet:11,
     },
     {
       type: "Historico",
@@ -96,6 +110,8 @@ export default function disporcards() {
       data: "11/05",
       horario: "16:00",
       imagem: pig,
+      idDaConsulta:8,
+      idadePet:12,
     },
     {
       type: "Historico",
@@ -105,6 +121,8 @@ export default function disporcards() {
       data: "12/05",
       horario: "16:00",
       imagem: pig,
+      idDaConsulta:9,
+      idadePet:13,
     },
     {
       type: "Vacinacao",
@@ -114,6 +132,8 @@ export default function disporcards() {
       data: "13/05",
       horario: "16:00",
       imagem: pig,
+      idDaConsulta:10,
+      idadePet:14,
     },
   ];
 
