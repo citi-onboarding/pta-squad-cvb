@@ -40,7 +40,7 @@ class UserController implements Crud {
     const updatedValues = { firstName, lastName, age };
 
     const { httpStatus, messageFromUpdate } = await this.citi.updateValue(
-      id,
+      Number(id),
       updatedValues
     );
 

@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import TopBar from "@/components/topbar/index";
 import { useState } from "react";
 import {
@@ -55,6 +56,8 @@ const formatDateInput = (valorDigitado: string): string => {
 };
 
 export default function TelaCadastro() {
+  const router = useRouter();
+
   // Estados do formulário
   const [nomepet, setNomepet] = useState<string>("");
   const [nomedono, setNomedono] = useState<string>("");
@@ -157,7 +160,7 @@ export default function TelaCadastro() {
         className="flex flex-col gap-[10px] ml-[135px] mt-[35px] mb-[60px] w-[calc(100%-135px-150px)]"
       >
         <div className="flex flex-row gap-[8px] items-center ">
-          <button type="button">
+          <button type="button" onClick={() => router.back()}>
             <Image
               src={SetaVoltar}
               alt="seta de voltar"
@@ -251,7 +254,10 @@ export default function TelaCadastro() {
               }
             >
               <option value="">Selecione aqui...</option>
+              <option value="Primeira consulta">Primeira consulta</option>
               <option value="Vacinacao">Vacinação</option>
+              <option value="Checkup">Checkup</option>
+              <option value="Retorno">Retorno</option>
               <option value="Historico">Histórico</option>
             </select>
           </div>

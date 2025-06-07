@@ -58,6 +58,22 @@ class controllerconsulta implements Crud {
     return response.status(httpStatus).send({ values });
   };
 
+    getById = async (request: Request, response: Response) => {
+      const { id } = request.params;
+
+      if (!id) {
+        return response.status(400).send({ message: "Parâmetro ID ausente" });
+      }
+
+      const { httpStatus, value } = await this.citi.findById(Number(id));
+
+      if (!value) {
+        return response.status(404).send({ message: "Consulta não encontrada" });
+      }
+
+      return response.status(httpStatus).send({ value });
+    };
+
   getByDonoAndPet = async (request: Request, response: Response) => {
     //  'nomedono' e 'nomepet'
     const { nomedono, nomepet } = request.params;
@@ -76,7 +92,6 @@ class controllerconsulta implements Crud {
     // Retorna a resposta HTTP com o status e os valores encontrados
     return response.status(httpStatus).send({ values });
   };
-
   getByNomedr = async (request: Request, response: Response) => {
     const { nomedr } = request.params;
 
@@ -122,7 +137,7 @@ class controllerconsulta implements Crud {
     };
 
     const { httpStatus, messageFromUpdate } = await this.citi.updateValue(
-      id,
+      Number(id),
       updatedValues
     );
 

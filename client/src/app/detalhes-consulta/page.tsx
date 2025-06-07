@@ -19,6 +19,7 @@ export default function DetalhesConsultaPage() {
         // Use o endpoint real do seu backend!
         const res = await fetch(`http://localhost:3001/Consulta/${id}`);
         const data = await res.json();
+        console.log("Dados retornados da API:", data);
         setConsulta(data.values[0]);
       } catch (e) {
         setConsulta(null);

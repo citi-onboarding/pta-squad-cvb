@@ -1,5 +1,6 @@
 import Message from "./Message";
 import Terminal from "./Terminal";
+
 import {
   InsertableDatabase,
   GetableDatabase,
@@ -7,7 +8,7 @@ import {
   UpdatableDatabaseValue,
   FindableDatabaseValue,
 } from "./types";
-import { PrismaClient, type Prisma } from "@prisma/client";
+import { PrismaClient, type Prisma, Consulta } from "@prisma/client";
 import prisma from "@database";
 
 type ModelNames = Prisma.ModelName;
@@ -116,27 +117,31 @@ export default class Citi<Entity extends ModelNames> {
    * @returns {Promise<FindableDatabaseValue<Models[Entity]>>} Uma promessa que resolve para um objeto contendo o status HTTP e o valor encontrado, se existir.
    */
   async findById(
-    id: string | number
-  ): Promise<FindableDatabaseValue<Models[Entity]>> {
+    id: number
+  ): Promise<{ httpStatus: number; value?: Consulta | null }> {
     try {
-      const value = await prisma[
-        this.entity.toLowerCase() as Uncapitalize<Prisma.ModelName>
-        //@ts-expect-error
-      ].findFirst({
-        where: {
-          id: Number(id),
-        },
+      const value = await prisma.consulta.findUnique({
+        where: { id: Number(id) },
       });
-      Terminal.show(Message.VALUE_WAS_FOUND);
+
+      if (!value) {
+        Terminal.show("Registro não encontrado");
+        return {
+          httpStatus: 404,
+          value: null,
+        };
+      }
+
+      Terminal.show("Registro encontrado");
       return {
         httpStatus: 200,
         value,
       };
     } catch (error) {
-      Terminal.show(Message.VALUE_WAS_NOT_FOUND);
+      Terminal.show("Erro ao buscar registro");
       return {
-        httpStatus: 400,
-        value: undefined,
+        httpStatus: 500,
+        value: null,
       };
     }
   }
@@ -200,7 +205,7 @@ export default class Citi<Entity extends ModelNames> {
    * @returns {Promise<UpdatableDatabaseValue>} Uma promessa que resolve para um objeto contendo o status HTTP e uma mensagem indicando o resultado da operação de atualização.
    */
   async updateValue<T extends ModelUpdateInput[Entity]>(
-    id: string | number,
+    id: number,
     object: T
   ): Promise<UpdatableDatabaseValue> {
     try {

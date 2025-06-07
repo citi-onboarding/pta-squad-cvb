@@ -23,7 +23,7 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
-        retorno: "#FF6419",
+        retorno: "#FF641999",
         primeiraconsulta: "#BFB5FF",
         vacinacao: "#AAE1FF",
         checkup: "#9CFF95",

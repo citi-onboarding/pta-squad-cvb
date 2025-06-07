@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 import { getConsultas } from "@/services/users";
 import PetCard, { PetCardProps } from "@/components/pet-card";
@@ -42,10 +43,19 @@ function getImagem(tipopet: string) {
 }
 
 export default function Disporcards() {
+  const router = useRouter();
   const [ativo, setAtivo] = useState("agendamento");
   const [cards, setCards] = useState<PetCardProps[]>([]);
   const [dataInicio, setDataInicio] = useState("");
   const [dataFim, setDataFim] = useState("");
+
+  // Estados para pesquisa do nome do Dr.
+  const [pesquisaDr, setPesquisaDr] = useState("");
+  const [filtroDr, setFiltroDr] = useState("");
+
+  function irParaCadastro() {
+    router.push("/cadastro");
+  }
 
   // Buscar consultas do banco ao carregar a tela
   useEffect(() => {
@@ -101,7 +111,13 @@ export default function Disporcards() {
     return new Date(ano, mes, dia);
   }
 
+  // Filtro dos cards: nome do dr, tipo, datas, etc.
   const cardsfiltrados = cards.filter((card) => {
+    // Filtro pelo nome do Dr se houver filtro ativo (case insensitive)
+    if (filtroDr && card.nomedr.toLowerCase() !== filtroDr.toLowerCase()) {
+      return false;
+    }
+
     // Supondo que o card.data é no formato "dd/mm"
     const partesData = card.data.split("/");
     if (partesData.length < 2) return false;
@@ -120,8 +136,8 @@ export default function Disporcards() {
       : card.type !== "Historico" && noIntervalo;
   });
 
-  console.log("Array de cards:", cardsfiltrados); // ou cards
-  console.log("ID:", cardsfiltrados[1].id);
+  // Debug (opcional)
+  // console.log("Array de cards:", cardsfiltrados);
 
   return (
     <div className="flex flex-1 flex-col justify-around items-center bg-white">
@@ -144,10 +160,14 @@ export default function Disporcards() {
         <input
           type="text"
           placeholder="Pesquise aqui..."
-          // Aqui você pode adicionar lógica para buscar por médico se quiser!
+          value={pesquisaDr}
+          onChange={(e) => setPesquisaDr(e.target.value)}
           className="w-[520px] h-[50px] rounded-lg border-[1px] border-gray-400 pl-5 mr-[20px] mt-[10px]"
         />
-        <button className="font-sf font-bold w-[116px] h-[42px] self-center rounded-full mt-[10px] shadow-md bg-btbuscar text-white">
+        <button
+          className="font-sf font-bold w-[116px] h-[42px] self-center rounded-full mt-[10px] shadow-md bg-btbuscar text-white"
+          onClick={() => setFiltroDr(pesquisaDr.trim())}
+        >
           Buscar
         </button>
       </div>
@@ -211,7 +231,10 @@ export default function Disporcards() {
         ))}
       </div>
 
-      <button className="flex justify-center items-center font-sf font-bold w-[205px] h-[42px] self-center rounded-full mt-[25px] ml-auto mr-[50px] shadow-md bg-btnovaconsulta text-white ">
+      <button
+        onClick={irParaCadastro}
+        className="flex justify-center items-center font-sf font-bold w-[205px] h-[42px] self-center rounded-full mt-[25px] ml-auto mr-[50px] shadow-md bg-btnovaconsulta text-white "
+      >
         <Image src={xbotao} alt="" className="" />
         <div className="ml-[12px]">Nova Consulta</div>
       </button>
