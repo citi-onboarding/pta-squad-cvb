@@ -247,13 +247,16 @@ export default function TelaCadastro() {
           <div className="flex flex-col w-full">
             <h2 className="font-bold">Tipo de Consulta</h2>
             <select
-              className="w-full border-2 border-gray-500 rounded-[8px] h-[40px] flex items-center focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-400 pl-3"
+              className="w-full border-2 border-gray-700 rounded-[8px] h-[40px] flex items-center focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700 pl-3"
               value={tipodaconsulta}
               onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
                 setTipodaconsulta(e.target.value)
               }
+              
             >
-              <option value="">Selecione aqui...</option>
+              <option value="" disabled selected className="text-gray-400">
+                Selecione aqui...
+              </option>
               <option value="Primeira consulta">Primeira consulta</option>
               <option value="Vacinacao">Vacinação</option>
               <option value="Checkup">Checkup</option>
@@ -271,7 +274,7 @@ export default function TelaCadastro() {
             <input
               type="text"
               placeholder="Digite aqui..."
-              className="w-full border-2 border-gray-500 rounded-[8px] h-[40px] flex items-center focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-400 pl-3"
+              className="w-full border-2 border-gray-500 rounded-[8px] p-4 h-[40px] flex items-center"
               value={nomedr}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setNomedr(e.target.value)

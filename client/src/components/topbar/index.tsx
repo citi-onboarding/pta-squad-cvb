@@ -1,10 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import { Logopet, Buttongroup } from "@/assets";
+import Link from "next/link";
 
 const TopBar = () => {
   return (
-    <div className="w-[full] h-[80px] flex justify-between items-center py-5 px-12 border-b border-[#d9d9d9] bg-white  mx-auto">
+    <div className="fixed top-0 left-0 right-0 z-50 w-full h-[80px] flex justify-between items-center py-5 px-12 border-b border-[#d9d9d9] bg-white mx-auto">
       {/* Logo à esquerda */}
       <div className="flex-none">
         <Image
@@ -16,8 +17,19 @@ const TopBar = () => {
 
       {/* Botões centrais */}
       <div className="flex-1 flex justify-center gap-8 text-center">
-        <ButtonWithHover label="Atendimento" />
-        <ButtonWithHover label="Cadastro"/>
+        <Link
+          href={"/"}
+        >
+          <ButtonWithHover label="Atendimento" />
+        </Link>
+
+
+        <Link
+          href={"/cadastro"}
+        >
+          <ButtonWithHover label="Cadastro"/>
+        </Link>
+        
       </div>
 
       {/* Logo à direita */}

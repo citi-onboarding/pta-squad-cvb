@@ -40,7 +40,7 @@ export default function PetCard(props: PetCardProps) {
 
   return (
     <Link
-      href={`/detalhes-consulta/${props.id}`}
+      href={`/detalhes-consulta`}
       className={`w-[470px] h-[120px] rounded-2xl flex items-center ${
         bgClasses[props.type]
       }`}
